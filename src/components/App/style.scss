@@ -1,0 +1,40 @@
+@import 'sass/style';
+@import '@material/typography/mixins';
+@import '@material/layout-grid/mixins';
+
+@include load-typography-font;
+
+html {
+  overflow: hidden;
+}
+
+.app {
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+
+  @include mdc-typography-base;
+
+  &__container {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    min-height: 100vh;
+  }
+
+  &__body {
+    @include mdc-typography('body1');
+  }
+
+  &__bg {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+    background-image: url('bg.jpg');
+    background-size: cover;
+  }
+}

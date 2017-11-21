@@ -1,0 +1,24 @@
+@import 'sass/style';
+@import '@material/typography/mixins';
+
+.heading {
+  &_title {
+    @include mdc-typography(title);
+
+    &.heading_indented {
+      @include mdc-typography-adjust-margin(title);
+    }
+  }
+
+  &_sub2 {
+    @include mdc-typography(subheading2);
+
+    &.heading_indented {
+      @include mdc-typography-adjust-margin(subheading2);
+    }
+  }
+
+  &_red {
+    color: red;
+  }
+}

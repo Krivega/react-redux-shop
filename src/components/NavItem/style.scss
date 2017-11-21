@@ -1,0 +1,90 @@
+@import 'sass/style';
+@import '@material/typography/mixins';
+@import '@material/theme/mixins';
+
+.nav-item {
+  overflow: hidden;
+  box-sizing: border-box;
+  text-align: center;
+  white-space: nowrap;
+
+  @include mdc-theme-prop(color, text-secondary-on-dark);
+
+  @include media-query(mobile) {
+    height: 100%;
+    transition: opacity 200ms 0ms cubic-bezier(0, 0, 0.2, 1), font-size 50ms 0ms ease;
+    opacity: 0.3;
+    will-change: opacity, font-size;
+
+    @include mdc-typography(caption);
+
+    &_active {
+      opacity: 1;
+
+      @include mdc-typography(body1);
+
+      .nav-item__content {
+        padding-top: 6px;
+      }
+    }
+  }
+
+  @include media-query(desktop) {
+    @include mdc-typography(body2);
+
+    text-transform: uppercase;
+
+    &:not(.nav-item_active) {
+      cursor: pointer;
+      transition: color 200ms 0ms cubic-bezier(0, 0, 0.2, 1);
+      will-change: color;
+
+      &:hover {
+        @include mdc-theme-prop(color, text-disabled-on-dark, false);
+      }
+    }
+  }
+
+  &:hover,
+  &_active {
+    @include mdc-theme-prop(color, text-primary-on-dark, false);
+  }
+
+  &:focus {
+    @include mdc-theme-prop(outline-color, text-secondary-on-dark);
+  }
+
+  a {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  &__content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    min-height: $tab-with-text-height;
+
+    @include media-query(mobile) {
+      flex-direction: column;
+      box-sizing: border-box;
+
+      // min-width: 80px;
+      // max-width: 168px;
+      padding: 8px 12px 10px;
+    }
+
+    @include media-query(desktop) {
+      min-width: 160px;
+      padding: 0 24px;
+    }
+  }
+
+  &__icon {
+    @include media-query(desktop) {
+      display: none;
+    }
+  }
+}

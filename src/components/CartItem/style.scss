@@ -1,0 +1,91 @@
+@import 'sass/style';
+
+@import '@material/ripple/mixins';
+@import '@material/rtl/mixins';
+@import '@material/theme/mixins';
+@import '@material/typography/mixins';
+@import '@material/typography/variables';
+
+// Sets the width and height of a detail element to the specified dimension.
+@mixin size($size) {
+  width: $size;
+  height: $size;
+}
+
+.cart-item {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  height: 72px;
+
+  @include mdc-typography-overflow-ellipsis;
+
+  @include mdc-typography(subheading2);
+
+  @include mdc-theme-prop(color, text-primary-on-background);
+
+  // According to the mocks and stickersheet, the line-height is adjusted to 24px for text content,
+  // same as for subheading1.
+  line-height: map-get(map-get($mdc-typography-styles, subheading1), line-height);
+
+  &_readonly {
+    height: 40px;
+
+    .cart-item__text {
+      flex-direction: row;
+      align-items: center;
+
+      &__secondary {
+        margin-left: 18px;
+      }
+    }
+  }
+
+  &__image {
+    $size: 40px;
+    $text-offset: 72px;
+    $side-padding: $mdc-list-side-padding;
+    $margin-value: $text-offset - $side-padding - $size;
+
+    @include size($size);
+
+    margin-right: $margin-value;
+  }
+
+  &__text {
+    display: inline-flex;
+    flex-direction: column;
+
+    &__secondary {
+      @include mdc-typography(body1);
+
+      @include mdc-theme-prop(color, text-secondary-on-background);
+    }
+  }
+
+  &__actions-secondary {
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    width: 18px * 3;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  &__actions-primary {
+    flex-shrink: 0;
+    margin-left: auto;
+    cursor: pointer;
+
+    @include size(18px);
+
+    @include mdc-theme-prop(color, text-secondary-on-background, false);
+  }
+
+  &__info {
+    flex-shrink: 0;
+    margin-left: auto;
+
+    @include mdc-theme-prop(color, text-secondary-on-background, false);
+  }
+}

@@ -1,0 +1,18 @@
+@import './responsive-utils';
+@import '@material/layout-grid/mixins';
+
+@mixin media-query($size) {
+  @if $size == mobile {
+    @include -media-query-(phone, $mdc-layout-grid-breakpoints) {
+      @content;
+    }
+
+    @include -media-query-(tablet, $mdc-layout-grid-breakpoints) {
+      @content;
+    }
+  } @else {
+    @include -media-query-($size, $mdc-layout-grid-breakpoints) {
+      @content;
+    }
+  }
+}

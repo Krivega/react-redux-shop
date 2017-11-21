@@ -1,0 +1,46 @@
+@import 'sass/style';
+
+@import '@material/ripple/mixins';
+@import '@material/rtl/mixins';
+@import '@material/theme/mixins';
+@import '@material/typography/mixins';
+@import '@material/typography/variables';
+
+.list-item {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  height: 40px;
+
+  @include mdc-typography-overflow-ellipsis;
+
+  @include mdc-typography(subheading2);
+
+  @include mdc-theme-prop(color, text-primary-on-background);
+
+  // According to the mocks and stickersheet, the line-height is adjusted to 24px for text content,
+  // same as for subheading1.
+  line-height: map-get(map-get($mdc-typography-styles, subheading1), line-height);
+
+  &__text {
+    display: inline-flex;
+    flex-direction: column;
+  }
+
+  &__info {
+    flex-shrink: 0;
+    margin-left: auto;
+
+    @include mdc-theme-prop(color, text-secondary-on-background, false);
+  }
+
+  &_interactive {
+    cursor: pointer;
+
+    &:hover,
+    &:active,
+    &:focus {
+      @include mdc-theme-prop(color, primary);
+    }
+  }
+}

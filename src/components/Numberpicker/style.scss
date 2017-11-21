@@ -1,0 +1,13 @@
+@import 'sass/style';
+@import '@material/fab/mixins';
+
+.numberpicker {
+  display: inline-flex;
+  align-items: center;
+
+  &__action {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+  }
+}

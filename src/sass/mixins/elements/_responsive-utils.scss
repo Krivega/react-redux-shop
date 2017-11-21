@@ -1,0 +1,53 @@
+// returns the lower grid boundary or null if the smallest grid is selected
+@function -breakpoint-min($size, $breakpoints) {
+  @if not map-has-key($breakpoints, $size) {
+    @error "Invalid style specified! Choose one of #{map-keys($breakpoints)}";
+  }
+
+  $min: map-get($breakpoints, $size);
+
+  @return if($min != 0, $min, null);
+}
+
+// returns the upper grid boundary or null if the largest grid is selected
+@function -breakpoint-max($size, $breakpoints) {
+  @if not map-has-key($breakpoints, $size) {
+    @error "Invalid style specified! Choose one of #{map-keys($breakpoints)}";
+  }
+
+  $names: map-keys($breakpoints);
+  $n: index($names, $size);
+  $prev: if($n > 1, nth($names, $n - 1), null);
+
+  @return if($prev, -breakpoint-min($prev, $breakpoints) - 1px, null);
+}
+
+// Private mixins, meant for internal use.
+@mixin -media-query-($size, $breakpoints) {
+  @if not map-has-key($breakpoints, $size) {
+    @error "Invalid style specified! Choose one of #{map-keys($breakpoints)}";
+  }
+
+  $min: -breakpoint-min($size, $breakpoints);
+  $max: -breakpoint-max($size, $breakpoints);
+
+  @if $min == null and $max != null {
+    // Phone
+    @media (max-width: $max) {
+      @content;
+    }
+  } @else if $min != null and $max != null {
+    // Tablet
+    @media (min-width: $min) and (max-width: $max) {
+      @content;
+    }
+  } @else if $min != null and $max == null {
+    // Desktop
+    @media (min-width: $min) {
+      @content;
+    }
+  } @else {
+    // Fallback - no breakpoints defined
+    @content;
+  }
+}

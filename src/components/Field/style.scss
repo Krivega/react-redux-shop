@@ -1,0 +1,205 @@
+@import 'sass/style';
+@import '@material/animation/functions';
+@import '@material/animation/variables';
+@import '@material/theme/mixins';
+@import '@material/typography/mixins';
+
+$field-underline-on-light: rgba(black, 1);
+$field-underline-on-light-idle: rgba(black, 0.5);
+$field-light-placeholder: rgba(white, 0.3);
+$field-error-on-light: #d50000;
+$field-disabled-border-on-light: rgba(#231f20, 0.26);
+
+@function transition($property) {
+  @return #{$property} 180ms $mdc-animation-standard-curve-timing-function;
+}
+
+.field {
+  position: relative;
+  display: inline-flex;
+  align-items: flex-end;
+  box-sizing: border-box;
+  width: 100%;
+  height: 48px;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  will-change: opacity, transform, color;
+
+  &_flat {
+    height: auto;
+    margin-top: 0;
+    margin-bottom: 0;
+
+    &,
+    .field__input {
+      padding: 0;
+      border: none;
+      outline: none;
+      text-align: center;
+    }
+  }
+
+  &__input {
+    @include mdc-theme-prop(color, text-primary-on-light);
+
+    @include mdc-typography-base;
+
+    width: 100%;
+    padding: 0 0 8px;
+    transition: transition(opacity);
+    border: none;
+    border-bottom: 1px solid $field-underline-on-light-idle;
+    background: none;
+    font-size: inherit;
+    appearance: none;
+
+    // We use only a subset of the MDC typography values here as changing things such as line-height
+    // affects how the labels are transformed.
+    // TODO: Re-add setting the font-size from mdc-typography-styles (currently
+    // setting it here has no effect because it is overriden by the font-size
+    // given below).
+    @each $prop in letter-spacing {
+      #{$prop}: map-get(map-get($mdc-typography-styles, subheading2), $prop);
+    }
+
+    &::placeholder {
+      @include mdc-theme-prop(color, text-hint-on-light);
+
+      transition: transition(color);
+      opacity: 1;
+    }
+
+    &:hover {
+      border-color: $field-underline-on-light;
+    }
+
+    &:focus {
+      outline: none;
+
+      &::placeholder {
+        @include mdc-theme-prop(color, $field-light-placeholder);
+      }
+
+      & ~ .field__bottom-line {
+        opacity: 1;
+      }
+    }
+
+    // Remove red outline on firefox
+    &:invalid {
+      box-shadow: none;
+    }
+
+    // stylelint-disable plugin/selector-bem-pattern
+    &:-webkit-autofill + .field__label {
+      cursor: auto;
+      transform: translateY(-100%) scale(0.75, 0.75);
+    }
+
+    &:required + .field__label::after {
+      margin-left: 1px;
+      content: '*';
+
+      .field_focused & {
+        color: $field-error-on-light;
+      }
+    }
+  }
+
+  &__bottom-line {
+    @include mdc-theme-prop(background-color, primary);
+
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: 2;
+    width: 100%;
+    height: 2px;
+    transition: transition(transform), transition(opacity);
+    transform: scaleX(0);
+    opacity: 0;
+
+    &_active {
+      transform: scaleX(1);
+    }
+  }
+
+  &__label {
+    position: absolute;
+    bottom: 8px;
+    left: 0;
+    cursor: text;
+    transition: transition(transform), transition(color);
+    transform-origin: left top;
+    pointer-events: none;
+    color: $field-underline-on-light-idle;
+
+    &_float {
+      cursor: auto;
+      transform: translateY(-100%) scale(0.75, 0.75);
+    }
+  }
+
+  &_invalid {
+    .field__label {
+      color: $field-error-on-light;
+    }
+
+    .field__input {
+      border-color: $field-error-on-light;
+    }
+
+    .field__bottom-line {
+      background-color: $field-error-on-light;
+    }
+
+    &.field_disabled {
+      .field__label {
+        @include mdc-theme-prop(color, text-disabled-on-light);
+      }
+    }
+  }
+
+  &_disabled {
+    pointer-events: none;
+
+    .field__input {
+      border-bottom: 1px dotted $field-disabled-border-on-light;
+    }
+
+    // stylelint-disable plugin/selector-bem-pattern
+    .field__input,
+    .field__label,
+    + .field-helptext {
+      @include mdc-theme-prop(color, text-disabled-on-light);
+    }
+
+    // stylelint-enable plugin/selector-bem-pattern
+
+    .field__label {
+      bottom: 8px;
+      cursor: default;
+    }
+  }
+
+  &__helptext {
+    @include mdc-theme-prop(color, text-hint-on-light);
+
+    margin: 0;
+    transition: field-transition(opacity);
+    opacity: 0;
+    font-size: 0.75rem;
+    will-change: opacity;
+
+    // stylelint-disable plugin/selector-bem-pattern
+    .field + & {
+      margin-bottom: 8px;
+    }
+
+    .field_focused + &:not(#{&}_validation-msg) {
+      opacity: 1;
+    }
+
+    // stylelint-enable plugin/selector-bem-pattern
+  }
+}

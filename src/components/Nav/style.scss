@@ -1,0 +1,31 @@
+@import 'sass/style';
+
+.nav {
+  position: relative;
+
+  @extend %syslist;
+
+  @include media-query(mobile) {
+    display: flex;
+    justify-content: center;
+  }
+
+  @include media-query(desktop) {
+    display: table;
+    height: $tab-with-text-height;
+    margin: 0 auto;
+  }
+
+  &__item {
+    @include media-query(mobile) {
+      width: 100%;
+      min-width: 80px;
+      max-width: 168px;
+    }
+
+    @include media-query(desktop) {
+      display: table-cell;
+      vertical-align: middle;
+    }
+  }
+}

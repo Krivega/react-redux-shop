@@ -1,0 +1,19 @@
+@import 'sass/style';
+@import '@material/typography/mixins';
+
+.cart-indicator {
+  // @include mdc-typography(display1);
+
+  @include media-query(mobile) {
+    position: absolute;
+    right: 16px;
+    top: -16px;
+    transform: translate(0, -100%);
+  }
+
+  @include media-query(desktop) {
+    position: absolute;
+    right: 24px;
+    bottom: -50%;
+  }
+}

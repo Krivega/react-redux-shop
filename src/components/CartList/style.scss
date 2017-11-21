@@ -1,0 +1,11 @@
+@import 'sass/style';
+@import '@material/theme/mixins';
+
+.cart-list {
+  @extend %syslist;
+
+  &_indented {
+    padding-right: $mdc-list-side-padding;
+    padding-left: $mdc-list-side-padding;
+  }
+}

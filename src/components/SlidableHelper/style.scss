@@ -1,0 +1,147 @@
+@import 'sass/style';
+@import '@material/animation/functions';
+@import '@material/animation/variables';
+@import '@material/theme/mixins';
+@import '@material/elevation/mixins';
+
+@keyframes mouse-dot {
+  from {
+    color: transparent;
+  }
+
+  33% {
+    color: #fff;
+  }
+
+  to {
+    padding-top: 20px;
+    color: transparent;
+  }
+}
+
+@keyframes touch-dot {
+  from {
+    opacity: 0;
+  }
+
+  33% {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+    -webkit-transform: translateY(-20px);
+    transform: translateY(-20px);
+  }
+}
+
+@-webkit-keyframes mouse-dot {
+  from {
+    color: transparent;
+  }
+
+  33% {
+    color: #fff;
+  }
+
+  to {
+    padding-top: 20px;
+    color: transparent;
+  }
+}
+
+.slidable-helper {
+  position: absolute;
+  left: 50%;
+  width: 300px;
+  transition: opacity 0.8s linear 2s, transform 1.5s cubic-bezier(0.23, 1, 0.32, 1) 2s;
+  transform: translate(-50%, 100px);
+  opacity: 0;
+
+  &__content {
+    -webkit-font-smoothing: antialiased;
+    font-style: italic;
+    color: #fff;
+    text-align: center;
+
+    &_notouch {
+      font-size: 16px;
+    }
+
+    &_touch {
+      font-size: 11px;
+    }
+  }
+
+  &:before,
+  &:after {
+    box-sizing: border-box;
+    content: '';
+    display: block;
+    position: relative;
+    width: 10px;
+    height: 10px;
+    background: #fff;
+    border-radius: 100%;
+    margin: 0 auto;
+    bottom: 0;
+    line-height: 0;
+    text-align: center;
+    animation: touch-dot 1.5s cubic-bezier(0.23, 1, 0.32, 1) infinite;
+    transition: opacity 0.8s linear 2.5s, transform 1.5s cubic-bezier(0.23, 1, 0.32, 1) 2.5s;
+  }
+
+  &:before {
+    @include media-query(phone) {
+      @include mdc-elevation(1);
+    }
+  }
+
+  &:after {
+    content: '•';
+    margin-top: 20px;
+    margin-bottom: 15px;
+    font-size: 22px;
+    line-height: 1;
+    background: transparent;
+    border: 2px solid white;
+    border-radius: 30px;
+    width: 31px;
+    height: 50px;
+    animation: mouse-dot 1.5s cubic-bezier(0.23, 1, 0.32, 1) infinite;
+  }
+
+  &_notouch {
+    bottom: 0;
+
+    .slidable-helper__content_touch {
+      display: none;
+    }
+
+    &:before {
+      display: none;
+    }
+  }
+
+  &_touch {
+    bottom: $header-size + 10px;
+
+    .slidable-helper__content_notouch {
+      display: none;
+    }
+
+    &:after {
+      display: none;
+    }
+  }
+
+  &_active {
+    transform: translate(-50%, 0);
+    opacity: 1;
+  }
+
+  &_hidden {
+    transition: opacity 500ms ease-in;
+    opacity: 0;
+  }
+}

@@ -1,0 +1,9 @@
+@import 'sass/variables';
+
+@mixin load-typography-font {
+  @import url(#{$typography-font-family-path});
+}
+
+@mixin load-icons-font {
+  @import url(#{$icons-font-family-path});
+}

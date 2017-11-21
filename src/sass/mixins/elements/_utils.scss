@@ -1,0 +1,10 @@
+%sys {
+  margin: 0;
+  padding: 0;
+}
+
+%syslist {
+  list-style: none;
+
+  @extend %sys;
+}

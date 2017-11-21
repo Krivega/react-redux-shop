@@ -1,0 +1,42 @@
+$primaryColor: #445533;
+$secondaryColor: #6b5c3f;
+
+$mdc-theme-primary: $primaryColor;
+$mdc-theme-secondary: $secondaryColor;
+$mdc-theme-background: #fff;
+
+$mdc-theme-primary-light: #647c64;
+$mdc-theme-primary-dark: #443f30;
+$mdc-theme-secondary-light: #544b38;
+$mdc-theme-secondary-dark: #4d4536;
+
+$mdc-theme-text-colors: (
+  dark:
+    (
+      primary: rgba(black, 0.87),
+      secondary: rgba(black, 0.54),
+      hint: rgba(black, 0.38),
+      disabled: rgba(black, 0.38),
+      icon: rgba(black, 0.38)
+    ),
+  light:
+    (
+      primary: white,
+      secondary: #f3f3f3,
+      hint: rgba(white, 0.5),
+      disabled: rgba(white, 0.5),
+      icon: rgba(white, 0.5)
+    )
+);
+
+$mdc-layout-grid-max-width: 1280px;
+
+$icons-font-family-path: 'https://fonts.googleapis.com/icon?family=Material+Icons';
+$typography-font-family-path: 'https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i&subset=cyrillic'
+  !default;
+
+$tab-with-text-height: 48px;
+
+$header-size: 48px + 16px;
+
+$mdc-list-side-padding: 16px;

@@ -1,0 +1,55 @@
+@import 'sass/style';
+@import '@material/theme/mixins';
+@import '@material/layout-grid/mixins';
+
+.header {
+  position: absolute;
+  right: 0;
+  left: 0;
+  z-index: 4;
+  height: $header-size;
+  background-color: rgba(black, 0.2);
+
+  @include mdc-theme-prop(color, text-secondary-on-secondary-dark, false);
+
+  @include media-query(mobile) {
+    bottom: 0;
+  }
+
+  @include media-query(desktop) {
+    top: 0;
+  }
+
+  &__primary {
+    // @include media-query(mobile) {
+    //   height: 100%;
+    // }
+  }
+
+  &__secondary {
+    padding-left: 24px;
+
+    @include media-query(mobile) {
+      display: none;
+    }
+  }
+
+  &__content {
+    position: relative;
+    width: 100%;
+    max-width: $mdc-layout-grid-max-width;
+
+    // @include media-query(mobile) {
+    //   height: 100%;
+    // }
+
+    @include media-query(desktop) {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 5px auto 0;
+      padding-right: 24px;
+      padding-left: 24px;
+    }
+  }
+}

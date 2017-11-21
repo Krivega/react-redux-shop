@@ -1,0 +1,64 @@
+import React from 'react';
+import PropTypes from 'prop-types';
+import features from 'features';
+import { stringify as bem } from 'rebem-classname';
+
+import './style.css';
+
+const block = 'slidable-helper';
+
+export default class SlidableHelper extends React.Component {
+  static propTypes = {
+    hidden: PropTypes.bool
+  };
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      active: false,
+      hidden: false
+    };
+  }
+
+  componentWillReceiveProps(props) {
+    const { hidden } = props;
+
+    if (hidden !== undefined) {
+      if (hidden === true) {
+        clearTimeout(this.activeTimeout);
+      }
+      this.setState({ hidden });
+    }
+  }
+
+  getBemMods() {
+    const touch = features.isTouchDevice();
+
+    return {
+      hidden: this.state.hidden,
+      active: this.state.active,
+      touch: !!touch,
+      notouch: !touch
+    };
+  }
+
+  render() {
+    return (
+      <div className={bem({ block, mods: this.getBemMods() })}>
+        <div className={bem({ block, elem: 'content', mods: { notouch: true } })}>
+          Scroll or use arrow keys
+        </div>
+        <div className={bem({ block, elem: 'content', mods: { touch: true } })}>Swipe up</div>
+      </div>
+    );
+  }
+
+  componentDidMount() {
+    this.activeTimeout = setTimeout(() => this.setState({ active: true }));
+  }
+
+  componentWillUnmount() {
+    clearTimeout(this.activeTimeout);
+  }
+}

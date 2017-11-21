@@ -1,0 +1,87 @@
+@import 'sass/style';
+@import '@material/layout-grid/mixins';
+
+.slidable-list {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+
+  &__item {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    transition: transform 500ms cubic-bezier(0.825, 0, 0.5, 1);
+    transform: translateY(0);
+    will-change: transform;
+    height: calc(100vh - #{$header-size});
+
+    @include media-query(mobile) {
+      padding-bottom: $header-size;
+    }
+
+    @include media-query(desktop) {
+      padding-top: $header-size;
+    }
+
+    &_old {
+      overflow: hidden;
+      transform: translateY(-100%);
+    }
+
+    &_wait {
+      overflow: hidden;
+      transform: translateY(100%);
+    }
+
+    &__content {
+      height: 100%;
+
+      @each $size in map-keys($mdc-layout-grid-columns) {
+        @include mdc-layout-grid-media-query-($size) {
+          $margin: map-get($mdc-layout-grid-default-margin, $size);
+
+          @include mdc-layout-grid($size, $margin, $mdc-layout-grid-max-width);
+        }
+      }
+
+      @include media-query(mobile) {
+        display: flex;
+        align-items: center;
+      }
+    }
+  }
+
+  &__nav {
+    position: absolute;
+    top: 50%;
+    right: 40px;
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    justify-content: center;
+    transform: translate(0, -50%);
+
+    &__item {
+      width: 16px;
+      height: 16px;
+      margin-bottom: 10px;
+      transition: background-color 150ms ease-in;
+      border: 1px solid rgba(white, 0.5);
+      border-radius: 50%;
+      will-change: background-color;
+
+      &:not(.slidable-list__nav__item_active) {
+        cursor: pointer;
+
+        &:hover {
+          background-color: rgba(white, 0.25);
+        }
+      }
+
+      &_active {
+        background-color: rgba(white, 0.5);
+      }
+    }
+  }
+}

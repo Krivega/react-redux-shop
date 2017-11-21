@@ -1,0 +1,17 @@
+@import 'sass/style';
+@import '@material/typography/mixins';
+
+.cart-total {
+  padding-top: 8px;
+  border-top: 1px solid rgba(0, 0, 0, 0.12);
+  font-weight: 500;
+  text-align: right;
+
+  @include mdc-typography(subheading2);
+
+  &_indented {
+    padding-right: $mdc-list-side-padding;
+    padding-bottom: 8px;
+    padding-left: $mdc-list-side-padding;
+  }
+}

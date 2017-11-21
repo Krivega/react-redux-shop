@@ -1,0 +1,40 @@
+@import 'sass/style';
+@import '@material/elevation/mixins';
+@import '@material/layout-grid/mixins';
+
+.content {
+  height: calc(100vh - #{$header-size});
+
+  @include media-query(mobile) {
+    padding-bottom: $header-size;
+  }
+
+  @include media-query(desktop) {
+    padding-top: $header-size;
+  }
+
+  &__wrapper {
+    height: 100%;
+
+    @each $size in map-keys($mdc-layout-grid-columns) {
+      @include mdc-layout-grid-media-query-($size) {
+        $margin: map-get($mdc-layout-grid-default-margin, $size);
+
+        @include mdc-layout-grid($size, $margin, $mdc-layout-grid-max-width);
+      }
+    }
+  }
+
+  &__body {
+    overflow: hidden;
+    overflow-y: auto;
+    max-height: 100%;
+    box-sizing: border-box;
+    max-height: 100%;
+    padding: 32px 32px;
+    border-radius: 2px;
+    background-color: #fff;
+
+    @include mdc-elevation(3);
+  }
+}

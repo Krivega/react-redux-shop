@@ -1,0 +1,23 @@
+@import 'sass/style';
+@import '@material/theme/mixins';
+
+.cart {
+  width: 0;
+  transition: transform 500ms cubic-bezier(0.825, 0, 0.5, 1);
+  transform: translateX(calc(+100% + 20px));
+  will-change: transform;
+  touch-action: none;
+
+  &_open {
+    flex-shrink: 0;
+    box-sizing: border-box;
+    width: 320px;
+    padding: 0 24px;
+    transform: none;
+    pointer-events: auto;
+  }
+
+  &__actions {
+    border-bottom: 1px solid rgba(68, 85, 51, 0.096);
+  }
+}

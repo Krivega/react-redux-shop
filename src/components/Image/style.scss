@@ -1,0 +1,23 @@
+.image {
+  &_responsive {
+    max-width: 100%;
+    height: auto;
+    max-height: 100%;
+  }
+
+  &_fit {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &_circle {
+    border-radius: 50%;
+    overflow: hidden;
+  }
+
+  &_small {
+    width: 40px;
+    height: 40px;
+  }
+}

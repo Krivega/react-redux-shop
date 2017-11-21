@@ -1,0 +1,33 @@
+@import 'sass/style';
+
+@include load-icons-font;
+
+.icon {
+  display: inline-block;
+  font-family: 'Material Icons';
+  font-size: 24px; /* Preferred icon size */
+  font-weight: normal;
+  font-style: normal;
+  line-height: 1;
+  white-space: nowrap;
+  letter-spacing: normal;
+  text-transform: none;
+  word-wrap: normal;
+  direction: ltr;
+
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Support for IE. */
+  font-feature-settings: 'liga';
+
+  &_small {
+    font-size: 18px;
+  }
+}

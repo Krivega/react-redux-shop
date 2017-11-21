@@ -1,0 +1,14 @@
+@import 'sass/style';
+
+.money {
+  display: inline-block;
+
+  &__currency {
+    position: relative;
+    top: -0.2em;
+    display: inline-block;
+    margin-right: 0.2em;
+    opacity: 0.8;
+    font-size: 0.7em;
+  }
+}
