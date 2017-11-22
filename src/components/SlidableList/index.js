@@ -8,7 +8,6 @@ import SlidableHelper from 'components/SlidableHelper';
 import './style.css';
 
 const block = 'slidable-list';
-const ANIMATED_TIME = 1000;
 
 export default class SlidableList extends React.PureComponent {
   static defaultProps = {};
@@ -21,9 +20,9 @@ export default class SlidableList extends React.PureComponent {
     super(props);
     this.state = {
       sliding: false,
-      activeSlideIndex: 0,
-      slideDate: new Date()
+      activeSlideIndex: 0
     };
+    this._sliding = false;
   }
 
   componentWillMount() {
@@ -32,30 +31,30 @@ export default class SlidableList extends React.PureComponent {
 
   componentWillUnmount() {
     document.removeEventListener('keyup', this.handleKeyUp, false);
+
+    if (this.blockSlidingTimeout) {
+      clearTimeout(this.blockSlidingTimeout);
+    }
   }
 
   setSliding(sliding) {
-    this.setState({
-      sliding,
-      slideDate: new Date()
-    });
+    this._sliding = sliding;
   }
 
   updateSlides(next) {
-    this.setSliding(false);
-
     return next ? this.nextSlide() : this.previousSlide();
   }
 
   requestUpdateSlides(next) {
-    if (this.hasSliding()) {
+    const hasSliding = this.hasSliding();
+
+    if (hasSliding) {
       window.requestAnimationFrame(this.updateSlides.bind(this, next));
-      this.setSliding(true);
     }
   }
 
   hasSliding() {
-    return !this.state.sliding && new Date() - this.state.slideDate > ANIMATED_TIME;
+    return !this._sliding;
   }
 
   nextSlide() {
@@ -78,6 +77,7 @@ export default class SlidableList extends React.PureComponent {
   }
 
   setSlide(activeSlideIndex) {
+    this.setSliding(true);
     this.setState({ activeSlideIndex });
   }
 
@@ -98,21 +98,6 @@ export default class SlidableList extends React.PureComponent {
     this.requestUpdateSlides(false);
   };
 
-  renderItem = (Child, index) => {
-    const { activeSlideIndex } = this.state;
-
-    const mods = {
-      old: index < activeSlideIndex,
-      wait: index > activeSlideIndex
-    };
-
-    return (
-      <div className={bem({ block, elem: 'item', mods })} key={Child.key}>
-        <div className={bem({ block, elem: 'item__content' })}>{React.cloneElement(Child)}</div>
-      </div>
-    );
-  };
-
   handleKeyUp = event => {
     if (event.key === 'ArrowUp' || event.key === 'ArrowDown') {
       event.preventDefault();
@@ -126,6 +111,26 @@ export default class SlidableList extends React.PureComponent {
     }
   };
 
+  handleClickItemNav = index => {
+    this.setSlide(index);
+  };
+
+  handleTransitionEnd = event => {
+    if (
+      event.propertyName === 'transform' &&
+      event.currentTarget === event.target &&
+      this.hasActiveTarget(event.target)
+    ) {
+      this.blockSlidingTimeout = setTimeout(() => {
+        this.setSliding(false);
+      }, 500);
+    }
+  };
+
+  hasActiveTarget(target) {
+    return +target.dataset.index === this.state.activeSlideIndex;
+  }
+
   hasSlidableHelper() {
     const { activeSlideIndex } = this.state;
     const hasActive = activeSlideIndex === 0 && !this.issShowingSlidableHelper;
@@ -136,10 +141,6 @@ export default class SlidableList extends React.PureComponent {
 
     return !hasActive;
   }
-
-  handleClickItemNav = index => {
-    this.setSlide(index);
-  };
 
   renderNavItem(index) {
     const { activeSlideIndex } = this.state;
@@ -168,6 +169,26 @@ export default class SlidableList extends React.PureComponent {
 
     return <div className={bem({ block, elem: 'nav' })}>{items}</div>;
   }
+
+  renderItem = (Child, index) => {
+    const { activeSlideIndex } = this.state;
+
+    const mods = {
+      old: index < activeSlideIndex,
+      wait: index > activeSlideIndex
+    };
+
+    return (
+      <div
+        className={bem({ block, elem: 'item', mods })}
+        key={Child.key}
+        onTransitionEnd={this.handleTransitionEnd}
+        data-index={index}
+      >
+        <div className={bem({ block, elem: 'item__content' })}>{React.cloneElement(Child)}</div>
+      </div>
+    );
+  };
 
   renderComponent() {
     const { children } = this.props;

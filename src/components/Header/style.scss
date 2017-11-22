@@ -12,6 +12,10 @@
 
   @include mdc-theme-prop(color, text-secondary-on-secondary-dark, false);
 
+  @include media-query(phone) {
+    position: fixed;
+  }
+
   @include media-query(mobile) {
     bottom: 0;
   }
@@ -21,9 +25,6 @@
   }
 
   &__primary {
-    // @include media-query(mobile) {
-    //   height: 100%;
-    // }
   }
 
   &__secondary {
@@ -38,10 +39,6 @@
     position: relative;
     width: 100%;
     max-width: $mdc-layout-grid-max-width;
-
-    // @include media-query(mobile) {
-    //   height: 100%;
-    // }
 
     @include media-query(desktop) {
       display: flex;

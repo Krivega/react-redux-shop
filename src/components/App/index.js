@@ -4,6 +4,7 @@ import Header from 'components/Header';
 import Main from 'components/Main';
 import Cart from 'containers/Cart';
 import Order from 'containers/Order';
+import AppContainer from 'containers/AppContainer';
 
 import './style.css';
 
@@ -13,16 +14,14 @@ export default class App extends React.PureComponent {
   render() {
     return (
       <div className={bem({ block })}>
-        <div className={bem({ block, elem: 'container' })}>
+        <AppContainer>
           <Header />
           <div className={bem({ block, elem: 'body' })}>
             <Main />
           </div>
-
           <div className={bem({ block, elem: 'bg' })} />
-        </div>
+        </AppContainer>
         <Cart />
-
         <Order />
       </div>
     );

@@ -1,20 +1,31 @@
 @import 'sass/style';
+@import '@material/elevation/mixins';
 @import '@material/theme/mixins';
 
 .cart {
+  overflow: hidden;
   width: 0;
   transition: transform 500ms cubic-bezier(0.825, 0, 0.5, 1);
   transform: translateX(calc(+100% + 20px));
   will-change: transform;
   touch-action: none;
 
+  @include mdc-theme-prop(background-color, background);
+
   &_open {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 4;
     flex-shrink: 0;
     box-sizing: border-box;
-    width: 320px;
+    width: $cart-size;
+    height: 100vh;
     padding: 0 24px;
     transform: none;
     pointer-events: auto;
+
+    @include mdc-elevation(10);
   }
 
   &__actions {

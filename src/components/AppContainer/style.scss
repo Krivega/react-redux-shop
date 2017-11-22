@@ -1,0 +1,16 @@
+@import 'sass/style';
+@import '@material/typography/mixins';
+@import '@material/layout-grid/mixins';
+
+.app-container {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  min-height: 100vh;
+  transition: width 500ms cubic-bezier(0.825, 0, 0.5, 1);
+  will-change: width;
+
+  &_aside-pushed {
+    width: calc(100% - #{$cart-size});
+  }
+}
