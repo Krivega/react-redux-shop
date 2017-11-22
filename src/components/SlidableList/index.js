@@ -10,7 +10,7 @@ import './style.css';
 const block = 'slidable-list';
 const ANIMATED_TIME = 1000;
 
-export default class SlidableList extends React.Component {
+export default class SlidableList extends React.PureComponent {
   static defaultProps = {};
 
   static propTypes = {

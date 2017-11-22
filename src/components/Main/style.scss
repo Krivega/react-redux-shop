@@ -4,7 +4,7 @@
   position: relative;
 }
 
-.fadeTranslate-enter {
+.fade-translate-enter {
   opacity: 0.01;
   position: absolute;
   width: 100%;
@@ -12,16 +12,22 @@
   top: 0;
 }
 
-.fadeTranslate-enter.fadeTranslate-enter-active {
+.fade-translate-enter.fade-translate-enter-active {
   opacity: 1;
   transition: opacity 500ms ease-in;
+  z-index: 1;
 }
 
-.fadeTranslate-exit {
+.fade-translate-exit {
   opacity: 1;
 }
 
-.fadeTranslate-exit.fadeTranslate-exit-active {
+.fade-translate-exit.fade-translate-exit-active {
   opacity: 0.01;
   transition: opacity 500ms ease-in;
+  position: absolute;
+  width: 100%;
+  left: 0;
+  top: 0;
+  z-index: 0;
 }

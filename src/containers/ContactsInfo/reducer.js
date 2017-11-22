@@ -3,7 +3,7 @@ import { storeName } from './selectors';
 
 const initialState = fromJS({
   phoneNumber: '8 800 700 8000',
-  email: 'info@demo-midforest.com.com'
+  email: 'info@demo-midforest.com'
 });
 
 export default {

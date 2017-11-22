@@ -9,20 +9,22 @@ import './style.css';
 
 const block = 'app';
 
-const App = () => (
-  <div className={bem({ block })}>
-    <div className={bem({ block, elem: 'container' })}>
-      <Header />
-      <div className={bem({ block, elem: 'body' })}>
-        <Main />
+export default class App extends React.PureComponent {
+  render() {
+    return (
+      <div className={bem({ block })}>
+        <div className={bem({ block, elem: 'container' })}>
+          <Header />
+          <div className={bem({ block, elem: 'body' })}>
+            <Main />
+          </div>
+
+          <div className={bem({ block, elem: 'bg' })} />
+        </div>
+        <Cart />
+
+        <Order />
       </div>
-
-      <div className={bem({ block, elem: 'bg' })} />
-    </div>
-    <Cart />
-
-    <Order />
-  </div>
-);
-
-export default App;
+    );
+  }
+}

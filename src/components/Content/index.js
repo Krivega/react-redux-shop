@@ -5,7 +5,7 @@ import './style.css';
 
 const block = 'content';
 
-export default class Content extends React.Component {
+export default class Content extends React.PureComponent {
   render() {
     const { children } = this.props;
 

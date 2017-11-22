@@ -8,7 +8,7 @@ import './style.css';
 
 const block = 'nav';
 
-export default class Nav extends React.Component {
+export default class Nav extends React.PureComponent {
   static propTypes = {
     activeIndex: PropTypes.number,
     size: PropTypes.number

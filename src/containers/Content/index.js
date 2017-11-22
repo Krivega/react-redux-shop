@@ -13,7 +13,7 @@ const Routes = ({ location }) => (
     <CSSTransition
       key={location.pathname.split('/')[1]}
       timeout={500}
-      classNames="fadeTranslate"
+      classNames="fade-translate"
       mountOnEnter={true}
       unmountOnExit={true}
     >

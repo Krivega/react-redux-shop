@@ -8,7 +8,7 @@ import './style.css';
 
 const block = 'header';
 
-export default class Header extends React.Component {
+export default class Header extends React.PureComponent {
   render() {
     return (
       <header className={bem({ block })}>

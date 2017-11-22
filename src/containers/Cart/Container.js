@@ -35,7 +35,7 @@ export default class ShopingCart extends React.PureComponent {
   render() {
     let { items, total, openCart, currency } = this.props;
 
-    if (items.size === 0) {
+    if (items.length === 0) {
       return null;
     }
 
