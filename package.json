@@ -1,6 +1,28 @@
 {
   "name": "react-redux-shop",
+  "description": "Implementation of an online store in the infrastructure of react-redux",
   "version": "0.1.0",
+  "keywords": [
+    "reactjs",
+    "redux"
+  ],
+  "contributors": [
+    {
+      "name": "Krivega Dmitriy",
+      "email": "mr.krivega@gmail.com",
+      "web": "http://krivega.com/"
+    }
+  ],
+  "demos": [
+    "http://midforest.krivega.com/"
+  ],
+  "repositories": [
+    {
+      "type": "git",
+      "url": "https://github.com/Krivega/react-redux-shop.git"
+    }
+  ],
+  "homepage": "https://github.com/Krivega/react-redux-shop",
   "private": true,
   "proxy": {
     "/api": {
