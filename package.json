@@ -22,7 +22,6 @@
       "url": "https://github.com/Krivega/react-redux-shop.git"
     }
   ],
-  "homepage": "https://github.com/Krivega/react-redux-shop",
   "private": true,
   "proxy": {
     "/api": {
