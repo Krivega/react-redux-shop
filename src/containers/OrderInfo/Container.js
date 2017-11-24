@@ -9,7 +9,15 @@ import Heading from 'components/Heading';
 import Money from 'components/Money';
 import Loader from 'components/Loader';
 
-export default class OrderInfo extends React.PureComponent {
+export default class OrderInfo extends React.Component {
+  shouldComponentUpdate(nextProps) {
+    return (
+      nextProps.cartTotal !== this.props.cartTotal ||
+      nextProps.sending !== this.props.sending ||
+      nextProps.sended !== this.props.sended
+    );
+  }
+
   renderItem = (item, index) => {
     const id = item.get('id');
     const { currency } = this.props;
@@ -33,7 +41,7 @@ export default class OrderInfo extends React.PureComponent {
     const { cartItems, cartTotal, currency, sending, sended } = this.props;
 
     if (cartItems.size === 0) {
-      return '';
+      return null;
     }
 
     if (sended) {

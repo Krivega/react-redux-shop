@@ -4,8 +4,4 @@ import selector from './selectors';
 
 const mapStateToProps = state => selector(state);
 
-const mapDispatchToProps = dispatch => {
-  return {};
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Container);
+export default connect(mapStateToProps)(Container);
