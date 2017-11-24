@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { stringify as bem } from 'rebem-classname';
 import features from 'features';
-import Swipeable from 'react-swipeable';
 import SlidableHelper from 'components/SlidableHelper';
 
 import './style.css';
@@ -20,13 +19,18 @@ export default class SlidableList extends React.PureComponent {
     super(props);
     this.state = {
       sliding: false,
-      activeSlideIndex: 0
+      activeSlideIndex: 0,
+      SwipeableComponent: null
     };
     this._sliding = false;
   }
 
   componentWillMount() {
     document.addEventListener('keyup', this.handleKeyUp, false);
+
+    if (features.isTouchDevice()) {
+      this.importSwipeableComponent();
+    }
   }
 
   componentWillUnmount() {
@@ -35,6 +39,14 @@ export default class SlidableList extends React.PureComponent {
     if (this.blockSlidingTimeout) {
       clearTimeout(this.blockSlidingTimeout);
     }
+  }
+
+  async importSwipeableComponent() {
+    const SwipeableComponent = await import('react-swipeable');
+
+    this.setState({
+      SwipeableComponent
+    });
   }
 
   setSliding(sliding) {
@@ -192,9 +204,10 @@ export default class SlidableList extends React.PureComponent {
 
   renderComponent() {
     const { children } = this.props;
+    const isTouchDevice = features.isTouchDevice();
 
     return (
-      <div className={bem({ block })} onWheel={this.handleWheel}>
+      <div className={bem({ block })} onWheel={!isTouchDevice ? this.handleWheel : null}>
         {React.Children.map(children, this.renderItem)}
         <SlidableHelper hidden={this.hasSlidableHelper()} />
         {this.renderNav()}
@@ -203,15 +216,17 @@ export default class SlidableList extends React.PureComponent {
   }
 
   render() {
-    if (features.isTouchDevice()) {
+    const { SwipeableComponent } = this.state;
+
+    if (features.isTouchDevice() && SwipeableComponent) {
       return (
-        <Swipeable
+        <SwipeableComponent
           preventDefaultTouchmoveEvent={true}
           onSwipingUp={this.handleSwipeUp}
           onSwipingDown={this.handleSwipeDown}
         >
           {this.renderComponent()}
-        </Swipeable>
+        </SwipeableComponent>
       );
     }
 
