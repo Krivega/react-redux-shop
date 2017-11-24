@@ -56,6 +56,10 @@
     display: inline-flex;
     flex-direction: column;
 
+    &__primary {
+      min-width: 50px;
+    }
+
     &__secondary {
       @include mdc-typography(body1);
 
@@ -69,12 +73,11 @@
     align-items: center;
     width: 18px * 3;
     margin-left: auto;
-    margin-right: auto;
+    margin-right: 10px;
   }
 
   &__actions-primary {
     flex-shrink: 0;
-    margin-left: auto;
     cursor: pointer;
 
     @include size(18px);

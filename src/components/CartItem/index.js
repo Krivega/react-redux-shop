@@ -139,8 +139,7 @@ export default class CartItem extends React.PureComponent {
       <div className={bem({ block, mods: this.getBemMods() })}>
         {this.renderImage()}
         <div className={bem({ block, elem: 'text' })}>
-          {productName}
-
+          <div className={bem({ block, elem: 'text__primary' })}>{productName}</div>
           {this.renderAdditionalInfo()}
         </div>
         {this.renderActionsSecondary()}
