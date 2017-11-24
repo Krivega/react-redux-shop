@@ -6,15 +6,23 @@ import ScrollableContent from 'components/ScrollableContent';
 import Actions from 'components/Actions';
 import Button from 'components/Button';
 
-export default class Order extends React.PureComponent {
+export default class Order extends React.Component {
   static defaultProps = {
     openOrder: false
   };
 
-  renderActions() {
-    const { sended } = this.props;
+  shouldComponentUpdate(nextProps) {
+    return (
+      (nextProps.cartSize !== this.props.cartSize && this.props.cartSize === 0) ||
+      nextProps.openOrder !== this.props.openOrder ||
+      nextProps.sended !== this.props.sended
+    );
+  }
 
-    if (sended) {
+  renderActions() {
+    const { sended, openOrder } = this.props;
+
+    if (sended || !openOrder) {
       return null;
     }
 
@@ -30,6 +38,20 @@ export default class Order extends React.PureComponent {
     );
   }
 
+  renderContent() {
+    const { openOrder } = this.props;
+
+    if (!openOrder) {
+      return null;
+    }
+
+    return (
+      <ScrollableContent>
+        <OrderInfo />
+      </ScrollableContent>
+    );
+  }
+
   render() {
     const { openOrder, cartSize, sended } = this.props;
     const title = sended ? null : 'Order';
@@ -40,9 +62,7 @@ export default class Order extends React.PureComponent {
 
     return (
       <Overlay open={openOrder} title={title} onClose={this.props.onClose}>
-        <ScrollableContent>
-          <OrderInfo />
-        </ScrollableContent>
+        {this.renderContent()}
         {this.renderActions()}
       </Overlay>
     );
