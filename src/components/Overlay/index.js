@@ -1,18 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { stringify as bem } from 'rebem-classname';
-import Button from 'components/Button';
 
 import './style.css';
 
 const block = 'overlay';
 
-export default class Overlay extends React.Component {
+export default class Overlay extends React.PureComponent {
   static propTypes = {
     title: PropTypes.string,
     open: PropTypes.bool,
-    onClose: PropTypes.func,
-    actions: PropTypes.arrayOf(PropTypes.object)
+    onClose: PropTypes.func
   };
 
   constructor(props) {
@@ -81,28 +79,6 @@ export default class Overlay extends React.Component {
     return { open: !!open, animating: !!animating };
   }
 
-  renderActions() {
-    const { actions } = this.props;
-
-    if (actions && actions.length !== 0) {
-      return (
-        <footer className={bem({ block, elem: 'footer' })}>
-          {actions.map(this.renderActionItem)}
-        </footer>
-      );
-    }
-  }
-
-  renderActionItem = (item, index) => {
-    return (
-      <div className={bem({ block, elem: 'footer__item' })} key={item.text + index}>
-        <Button raised={item.primary} {...item}>
-          {item.text}
-        </Button>
-      </div>
-    );
-  };
-
   renderHeader() {
     const { title } = this.props;
 
@@ -122,8 +98,7 @@ export default class Overlay extends React.Component {
       <aside className={bem({ block, mods: this.getBemMods() })}>
         <div className={bem({ block, elem: 'surface' })} onTransitionEnd={this.handleTransitionEnd}>
           {this.renderHeader()}
-          <section className={bem({ block, elem: 'content' })}>{children}</section>
-          {this.renderActions()}
+          {children}
         </div>
         <div className={bem({ block, elem: 'backdrop' })} onClick={this.handleClickBackdrop} />
       </aside>

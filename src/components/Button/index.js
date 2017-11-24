@@ -7,7 +7,7 @@ import './style.css';
 
 const block = 'button';
 
-export default class Button extends React.Component {
+export default class Button extends React.PureComponent {
   static propTypes = {
     link: PropTypes.string,
     icon: PropTypes.string,

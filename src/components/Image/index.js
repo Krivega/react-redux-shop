@@ -6,7 +6,7 @@ import './style.css';
 
 const block = 'image';
 
-export default class Image extends React.Component {
+export default class Image extends React.PureComponent {
   static propTypes = {
     src: PropTypes.string.isRequired,
     alt: PropTypes.string,

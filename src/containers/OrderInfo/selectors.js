@@ -17,7 +17,6 @@ export default createSelector(
     storeCart = parseStoreWithProducts(storeCart, productsStore);
 
     return {
-      openOrder: store.get('openOrder'),
       sended: store.get('sended'),
       sending: store.get('sending'),
       cartItems: storeCart

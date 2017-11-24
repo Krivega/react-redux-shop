@@ -7,7 +7,7 @@ import './style.css';
 
 const block = 'list';
 
-export default class List extends React.Component {
+export default class List extends React.PureComponent {
   static defaultProps = {
     items: []
   };

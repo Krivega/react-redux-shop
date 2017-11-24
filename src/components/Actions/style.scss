@@ -1,0 +1,23 @@
+@import 'sass/style';
+
+$heightActions: 68px;
+
+.actions {
+  @extend %syslist;
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  box-sizing: border-box;
+  height: $heightActions;
+  padding: 8px;
+  flex-wrap: wrap;
+
+  &__item {
+    margin-right: 8px;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}

@@ -8,7 +8,7 @@ import './style.css';
 
 const block = 'product';
 
-export default class Product extends React.Component {
+export default class Product extends React.PureComponent {
   static propTypes = {
     name: PropTypes.string.isRequired,
     price: PropTypes.number.isRequired,

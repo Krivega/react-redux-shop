@@ -185,7 +185,7 @@ export default class SlidableList extends React.PureComponent {
         onTransitionEnd={this.handleTransitionEnd}
         data-index={index}
       >
-        <div className={bem({ block, elem: 'item__content' })}>{React.cloneElement(Child)}</div>
+        <div className={bem({ block, elem: 'item__content' })}>{Child}</div>
       </div>
     );
   };

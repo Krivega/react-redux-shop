@@ -1,0 +1,11 @@
+@import 'sass/style';
+@import '@material/typography/mixins';
+
+.scrollable-content {
+  overflow-y: auto;
+  box-sizing: border-box;
+  max-height: 100vh;
+  padding: 20px 24px 24px;
+
+  @include mdc-typography(body1);
+}

@@ -7,7 +7,7 @@ import './style.css';
 
 const block = 'slidable-helper';
 
-export default class SlidableHelper extends React.Component {
+export default class SlidableHelper extends React.PureComponent {
   static propTypes = {
     hidden: PropTypes.bool
   };

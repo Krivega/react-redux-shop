@@ -6,7 +6,7 @@ import './style.css';
 
 const block = 'heading';
 
-export default class Heading extends React.Component {
+export default class Heading extends React.PureComponent {
   static propTypes = {
     title: PropTypes.bool,
     sub2: PropTypes.bool,

@@ -6,7 +6,7 @@ import './style.css';
 
 const block = 'loader';
 
-export default class Loader extends React.Component {
+export default class Loader extends React.PureComponent {
   static propTypes = {
     active: PropTypes.bool,
     fullscreen: PropTypes.bool

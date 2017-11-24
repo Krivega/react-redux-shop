@@ -6,7 +6,7 @@ import './style.css';
 
 const block = 'badge';
 
-export default class Badge extends React.Component {
+export default class Badge extends React.PureComponent {
   static propTypes = {
     value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
     badge: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),

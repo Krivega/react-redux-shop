@@ -4,7 +4,7 @@ import Field from 'components/Field';
 import Loader from 'components/Loader';
 import List from 'components/List';
 
-export default class Autocomplete extends React.Component {
+export default class Autocomplete extends React.PureComponent {
   static defaultProps = {
     list: []
   };

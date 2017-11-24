@@ -8,7 +8,7 @@ import './style.css';
 
 const block = 'fab';
 
-export default class Fab extends React.Component {
+export default class Fab extends React.PureComponent {
   static propTypes = {
     icon: PropTypes.string.isRequired,
     disabled: PropTypes.bool,
@@ -40,7 +40,7 @@ export default class Fab extends React.Component {
     const { badge } = this.props;
 
     if (badge === undefined || badge === 0) {
-      return;
+      return null;
     }
 
     return (

@@ -7,7 +7,7 @@ import './style.css';
 
 const block = 'cart-indicator';
 
-export default class CartIndicator extends React.Component {
+export default class CartIndicator extends React.PureComponent {
   static propTypes = {
     count: PropTypes.number.isRequired,
     onClick: PropTypes.func

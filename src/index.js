@@ -9,6 +9,11 @@ import 'normalize.css';
 import configureStore from 'configureStore';
 import App from 'components/App';
 import registerServiceWorker from 'registerServiceWorker';
+import { testUpdatesComponents } from 'developerTools';
+
+if (process.env.NODE_ENV !== 'production') {
+  testUpdatesComponents(React);
+}
 
 const history = createHistory();
 const store = configureStore(history);

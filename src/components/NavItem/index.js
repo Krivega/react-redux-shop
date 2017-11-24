@@ -8,7 +8,7 @@ import './style.css';
 
 const block = 'nav-item';
 
-export default class NavItem extends React.Component {
+export default class NavItem extends React.PureComponent {
   static propTypes = {
     text: PropTypes.string.isRequired,
     icon: PropTypes.string.isRequired,

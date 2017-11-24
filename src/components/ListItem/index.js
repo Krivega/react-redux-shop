@@ -6,7 +6,7 @@ import './style.css';
 
 const block = 'list-item';
 
-export default class ListItem extends React.Component {
+export default class ListItem extends React.PureComponent {
   static propTypes = {
     text: PropTypes.string.isRequired,
     id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,

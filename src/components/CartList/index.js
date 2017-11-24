@@ -6,7 +6,7 @@ import './style.css';
 
 const block = 'cart-list';
 
-export default class CartList extends React.Component {
+export default class CartList extends React.PureComponent {
   static propTypes = {
     indented: PropTypes.bool
   };
@@ -20,7 +20,7 @@ export default class CartList extends React.Component {
   renderItem = Child => {
     return (
       <li className={bem({ block, elem: 'item' })} key={Child.key}>
-        {React.cloneElement(Child)}
+        {Child}
       </li>
     );
   };

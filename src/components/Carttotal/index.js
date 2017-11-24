@@ -6,7 +6,7 @@ import './style.css';
 
 const block = 'cart-total';
 
-export default class Carttotal extends React.Component {
+export default class Carttotal extends React.PureComponent {
   static propTypes = {
     indented: PropTypes.bool
   };

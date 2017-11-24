@@ -6,7 +6,7 @@ import './style.css';
 
 const block = 'field';
 
-export default class Field extends React.Component {
+export default class Field extends React.PureComponent {
   static propTypes = {
     id: PropTypes.string,
     type: PropTypes.string,

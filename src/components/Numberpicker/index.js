@@ -8,7 +8,7 @@ import './style.css';
 
 const block = 'numberpicker';
 
-export default class Numberpicker extends React.Component {
+export default class Numberpicker extends React.PureComponent {
   static defaultProps = {
     min: 0,
     max: 999,

@@ -83,5 +83,8 @@
     "build": "npm-run-all build-css build-js",
     "test": "cross-env NODE_PATH=src react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
+  },
+  "devDependencies": {
+    "why-did-you-update": "^0.1.0"
   }
 }

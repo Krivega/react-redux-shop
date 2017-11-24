@@ -17,7 +17,7 @@ export default class Nav extends React.PureComponent {
   renderItem = Child => {
     return (
       <li className={bem({ block, elem: 'item' })} key={Child.key}>
-        {React.cloneElement(Child)}
+        {Child}
       </li>
     );
   };

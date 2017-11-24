@@ -6,7 +6,7 @@ import './style.css';
 
 const block = 'box';
 
-export default class Box extends React.Component {
+export default class Box extends React.PureComponent {
   static propTypes = {
     contentEnd: PropTypes.bool,
     top1: PropTypes.bool

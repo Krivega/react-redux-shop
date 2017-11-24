@@ -6,7 +6,7 @@ import './style.css';
 
 const block = 'money';
 
-export default class Money extends React.Component {
+export default class Money extends React.PureComponent {
   static propTypes = {
     value: PropTypes.number.isRequired,
     currency: PropTypes.string

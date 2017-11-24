@@ -6,7 +6,7 @@ import './style.css';
 
 const block = 'nav-indicator';
 
-export default class NavIndicator extends React.Component {
+export default class NavIndicator extends React.PureComponent {
   static propTypes = {
     activeIndex: PropTypes.number,
     size: PropTypes.number

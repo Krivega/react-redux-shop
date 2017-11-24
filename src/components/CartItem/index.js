@@ -11,7 +11,7 @@ import './style.css';
 
 const block = 'cart-item';
 
-export default class CartItem extends React.Component {
+export default class CartItem extends React.PureComponent {
   static propTypes = {
     id: PropTypes.string.isRequired,
     productName: PropTypes.string.isRequired,

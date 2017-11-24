@@ -6,7 +6,7 @@ import './style.css';
 
 const block = 'icon';
 
-export default class Fab extends React.Component {
+export default class Fab extends React.PureComponent {
   static propTypes = {
     name: PropTypes.string.isRequired,
     small: PropTypes.bool
