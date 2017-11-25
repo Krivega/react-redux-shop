@@ -21,6 +21,7 @@ export default class SellingProductsList extends React.PureComponent {
         price={item.get('price')}
         currency={currency}
         image={item.get('image')}
+        imagePlaceholder={item.get('imagePlaceholder')}
         description={item.get('description')}
       >
         <Button raised onClick={this.handleClickBuy.bind(this, id)}>

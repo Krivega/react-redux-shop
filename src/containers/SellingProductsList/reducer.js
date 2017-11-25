@@ -10,6 +10,7 @@ const initialState = fromJS({
       packageName: 'World creation',
       price: 1700,
       image: 'images/ferns.jpg',
+      imagePlaceholder: 'images/ferns-placeholder.jpg',
       description:
         'Large cozy kettle for four bowls. Ideal for fragrant herbal teas and strong hugs.\nVolume about 800 ml'
     },
@@ -20,6 +21,7 @@ const initialState = fromJS({
       packageName: 'World creation',
       price: 500,
       image: 'images/piala1.jpg',
+      imagePlaceholder: 'images/piala1-placeholder.jpg',
       description: 'Warm human dwellings'
     },
     {
@@ -29,6 +31,7 @@ const initialState = fromJS({
       packageName: 'World Forest Guardians',
       price: 1200,
       image: 'images/turk.jpg',
+      imagePlaceholder: 'images/turk-placeholder.jpg',
       description:
         'Big Turk "Child of the Earth" talks about the Guardian\'s song, a wooden pipe, and how the Lesa grasses listened attentively to her.\nVolume of 250 ml\nClay, glaze (enamel), milking, wood'
     },
@@ -39,6 +42,7 @@ const initialState = fromJS({
       packageName: 'World Forest Guardians',
       price: 800,
       image: 'images/box.jpg',
+      imagePlaceholder: 'images/box-placeholder.jpg',
       description:
         'Box with the Guardian Forest. Suitable for storing snowy sugar cranberries, rings and secrets.\nInside, the last green leaf hides from the cold.\nDimensions: 9x9x5 cm'
     }

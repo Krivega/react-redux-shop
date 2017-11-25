@@ -27,19 +27,6 @@ html {
     bottom: 0;
     left: 0;
     z-index: -1;
-
-    @include media-query(phone) {
-      background-image: url('bg-small.jpg');
-    }
-
-    @include media-query(tablet) {
-      background-image: url('bg-middle.jpg');
-    }
-
-    @include media-query(desktop) {
-      background-image: url('bg-big.jpg');
-    }
-
-    background-size: cover;
+    background-color: $mdc-theme-primary-dark;
   }
 }

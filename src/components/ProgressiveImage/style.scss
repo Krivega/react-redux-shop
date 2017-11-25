@@ -1,0 +1,15 @@
+@import 'sass/style';
+
+.progressive-image {
+  transition: filter 300ms ease;
+  will-change: filter;
+
+  &_loading {
+    filter: blur(10px);
+  }
+
+  &_fit {
+    width: 100%;
+    height: 100%;
+  }
+}
