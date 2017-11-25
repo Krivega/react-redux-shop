@@ -1,20 +1,20 @@
 @keyframes primary-indeterminate-translate {
   0% {
-    transform: translateX(0);
+    transform: translate3d(0, 0, 0);
   }
 
   20% {
     animation-timing-function: cubic-bezier(0.5, 0, 0.70173, 0.49582);
-    transform: translateX(0);
+    transform: translate3d(0, 0, 0);
   }
 
   59.15% {
     animation-timing-function: cubic-bezier(0.30244, 0.38135, 0.55, 0.95635);
-    transform: translateX(83.67142%);
+    transform: translate3d(83.67142%, 0, 0);
   }
 
   100% {
-    transform: translateX(200.61106%);
+    transform: translate3d(200.61106%, 0, 0);
   }
 }
 
@@ -41,21 +41,21 @@
 @keyframes secondary-indeterminate-translate {
   0% {
     animation-timing-function: cubic-bezier(0.15, 0, 0.51506, 0.40969);
-    transform: translateX(0);
+    transform: translate3d(0, 0, 0);
   }
 
   25% {
     animation-timing-function: cubic-bezier(0.31033, 0.28406, 0.8, 0.73371);
-    transform: translateX(37.65191%);
+    transform: translate3d(37.65191%, 0, 0);
   }
 
   48.35% {
     animation-timing-function: cubic-bezier(0.4, 0.62704, 0.6, 0.90203);
-    transform: translateX(84.38617%);
+    transform: translate3d(84.38617%, 0, 0);
   }
 
   100% {
-    transform: translateX(160.27778%);
+    transform: translate3d(160.27778%, 0, 0);
   }
 }
 
@@ -82,53 +82,53 @@
 
 @keyframes buffering {
   to {
-    transform: translateX(-10px);
+    transform: translate3d(-10px, 0, 0);
   }
 }
 
 @keyframes primary-indeterminate-translate-reverse {
   0% {
-    transform: translateX(0);
+    transform: translate3d(0, 0, 0);
   }
 
   20% {
     animation-timing-function: cubic-bezier(0.5, 0, 0.70173, 0.49582);
-    transform: translateX(0);
+    transform: translate3d(0, 0, 0);
   }
 
   59.15% {
     animation-timing-function: cubic-bezier(0.30244, 0.38135, 0.55, 0.95635);
-    transform: translateX(-83.67142%);
+    transform: translate3d(-83.67142%, 0, 0);
   }
 
   100% {
-    transform: translateX(-200.61106%);
+    transform: translate3d(-200.61106%, 0, 0);
   }
 }
 
 @keyframes secondary-indeterminate-translate-reverse {
   0% {
     animation-timing-function: cubic-bezier(0.15, 0, 0.51506, 0.40969);
-    transform: translateX(0);
+    transform: translate3d(0, 0, 0);
   }
 
   25% {
     animation-timing-function: cubic-bezier(0.31033, 0.28406, 0.8, 0.73371);
-    transform: translateX(-37.65191%);
+    transform: translate3d(-37.65191%, 0, 0);
   }
 
   48.35% {
     animation-timing-function: cubic-bezier(0.4, 0.62704, 0.6, 0.90203);
-    transform: translateX(-84.38617%);
+    transform: translate3d(-84.38617%, 0, 0);
   }
 
   100% {
-    transform: translateX(-160.27778%);
+    transform: translate3d(-160.27778%, 0, 0);
   }
 }
 
 @keyframes buffering-reverse {
   to {
-    transform: translateX(10px);
+    transform: translate3d(10px, 0, 0);
   }
 }

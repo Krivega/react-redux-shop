@@ -30,8 +30,7 @@
 
   to {
     opacity: 0;
-    -webkit-transform: translateY(-20px);
-    transform: translateY(-20px);
+    transform: translate3d(0, -20px, 0);
   }
 }
 
@@ -55,8 +54,9 @@
   left: 50%;
   width: 300px;
   transition: opacity 0.8s linear 2s, transform 1.5s cubic-bezier(0.23, 1, 0.32, 1) 2s;
-  transform: translate(-50%, 100px);
+  transform: translate3d(-50%, 100px, 0);
   opacity: 0;
+  will-change: opacity, transform;
 
   &__content {
     -webkit-font-smoothing: antialiased;
@@ -89,6 +89,7 @@
     text-align: center;
     animation: touch-dot 1.5s cubic-bezier(0.23, 1, 0.32, 1) infinite;
     transition: opacity 0.8s linear 2.5s, transform 1.5s cubic-bezier(0.23, 1, 0.32, 1) 2.5s;
+    will-change: opacity, transform;
   }
 
   &:before {
@@ -136,7 +137,7 @@
   }
 
   &_active {
-    transform: translate(-50%, 0);
+    transform: translate3d(-50%, 0, 0);
     opacity: 1;
   }
 

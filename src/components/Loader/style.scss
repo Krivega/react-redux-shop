@@ -47,7 +47,7 @@
     bottom: 50%;
     width: auto;
     left: 24px;
-    transform: translate(0, -50%);
+    transform: translate3d(0, -50%, 0);
   }
 
   &__backdrop {

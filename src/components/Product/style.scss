@@ -34,6 +34,7 @@ $product-item-info-column: (
     overflow: hidden;
     height: 100%;
     max-height: 440px;
+    background-color: $mdc-theme-primary-dark;
 
     @include mdc-elevation(5);
 

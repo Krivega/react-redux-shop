@@ -6,9 +6,9 @@
 
   @include media-query(mobile) {
     position: absolute;
-    right: 16px;
     top: -16px;
-    transform: translate(0, -100%);
+    right: 16px;
+    transform: translate3d(0, -100%, 0);
   }
 
   @include media-query(desktop) {

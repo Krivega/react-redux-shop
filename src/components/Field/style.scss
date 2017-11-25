@@ -93,7 +93,7 @@ $field-disabled-border-on-light: rgba(#231f20, 0.26);
     // stylelint-disable plugin/selector-bem-pattern
     &:-webkit-autofill + .field__label {
       cursor: auto;
-      transform: translateY(-100%) scale(0.75, 0.75);
+      transform: translate3d(0, -100%, 0) scale(0.75, 0.75);
     }
 
     &:required + .field__label::after {
@@ -136,7 +136,7 @@ $field-disabled-border-on-light: rgba(#231f20, 0.26);
 
     &_float {
       cursor: auto;
-      transform: translateY(-100%) scale(0.75, 0.75);
+      transform: translate3d(0, 100%, 0) scale(0.75, 0.75);
     }
   }
 
