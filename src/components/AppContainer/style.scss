@@ -7,7 +7,7 @@
   overflow: hidden;
   width: 100%;
   min-height: 100vh;
-  transition: transform 500ms cubic-bezier(0.825, 0, 0.5, 1);
+  transition: animation-moving(transform, 500ms);
   transform: translate3d(0, 0, 0);
   will-change: transform;
 

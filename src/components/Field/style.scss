@@ -1,6 +1,4 @@
 @import 'sass/style';
-@import '@material/animation/functions';
-@import '@material/animation/variables';
 @import '@material/theme/mixins';
 @import '@material/typography/mixins';
 
@@ -9,10 +7,6 @@ $field-underline-on-light-idle: rgba(black, 0.5);
 $field-light-placeholder: rgba(white, 0.3);
 $field-error-on-light: #d50000;
 $field-disabled-border-on-light: rgba(#231f20, 0.26);
-
-@function transition($property) {
-  @return #{$property} 180ms $mdc-animation-standard-curve-timing-function;
-}
 
 .field {
   position: relative;
@@ -136,7 +130,7 @@ $field-disabled-border-on-light: rgba(#231f20, 0.26);
 
     &_float {
       cursor: auto;
-      transform: translate3d(0, 100%, 0) scale(0.75, 0.75);
+      transform: translate3d(0, -100%, 0) scale(0.75, 0.75);
     }
   }
 
@@ -186,7 +180,7 @@ $field-disabled-border-on-light: rgba(#231f20, 0.26);
     @include mdc-theme-prop(color, text-hint-on-light);
 
     margin: 0;
-    transition: field-transition(opacity);
+    transition: transition(opacity);
     opacity: 0;
     font-size: 0.75rem;
     will-change: opacity;

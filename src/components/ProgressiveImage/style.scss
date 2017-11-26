@@ -4,7 +4,7 @@
   filter: blur(0);
 
   &_loading {
-    transition: filter 300ms ease;
+    transition: mdc-animation-enter(filter, 300ms )
     will-change: filter;
     filter: blur(10px);
   }

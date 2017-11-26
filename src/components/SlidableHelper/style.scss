@@ -1,6 +1,4 @@
 @import 'sass/style';
-@import '@material/animation/functions';
-@import '@material/animation/variables';
 @import '@material/theme/mixins';
 @import '@material/elevation/mixins';
 
@@ -34,35 +32,20 @@
   }
 }
 
-@-webkit-keyframes mouse-dot {
-  from {
-    color: transparent;
-  }
-
-  33% {
-    color: #fff;
-  }
-
-  to {
-    padding-top: 20px;
-    color: transparent;
-  }
-}
-
 .slidable-helper {
   position: absolute;
   left: 50%;
   width: 300px;
-  transition: opacity 0.8s linear 2s, transform 1.5s cubic-bezier(0.23, 1, 0.32, 1) 2s;
+  transition: mdc-animation-enter(opacity, 0.8s, 2s), animation-moving-flash(transform, 1.5s, 2s);
   transform: translate3d(-50%, 100px, 0);
   opacity: 0;
   will-change: opacity, transform;
 
   &__content {
-    -webkit-font-smoothing: antialiased;
     font-style: italic;
-    color: #fff;
     text-align: center;
+    color: #fff;
+    -webkit-font-smoothing: antialiased;
 
     &_notouch {
       font-size: 16px;
@@ -75,41 +58,43 @@
 
   &:before,
   &:after {
-    box-sizing: border-box;
-    content: '';
-    display: block;
     position: relative;
+    bottom: 0;
+    display: block;
+    box-sizing: border-box;
     width: 10px;
     height: 10px;
-    background: #fff;
-    border-radius: 100%;
     margin: 0 auto;
-    bottom: 0;
+    content: '';
+    transition: mdc-animation-enter(opacity, 0.8s, 2.5s),
+      animation-moving-flash(transform, 1.5s, 2.5s);
+    border-radius: 100%;
+    background: #fff;
     line-height: 0;
     text-align: center;
-    animation: touch-dot 1.5s cubic-bezier(0.23, 1, 0.32, 1) infinite;
-    transition: opacity 0.8s linear 2.5s, transform 1.5s cubic-bezier(0.23, 1, 0.32, 1) 2.5s;
     will-change: opacity, transform;
   }
 
   &:before {
+    animation: touch-dot 1.5s $animation-moving-flash-function infinite;
+
     @include media-query(phone) {
       @include mdc-elevation(1);
     }
   }
 
   &:after {
-    content: '•';
-    margin-top: 20px;
-    margin-bottom: 15px;
-    font-size: 22px;
-    line-height: 1;
-    background: transparent;
-    border: 2px solid white;
-    border-radius: 30px;
     width: 31px;
     height: 50px;
-    animation: mouse-dot 1.5s cubic-bezier(0.23, 1, 0.32, 1) infinite;
+    margin-top: 20px;
+    margin-bottom: 15px;
+    content: '•';
+    animation: mouse-dot 1.5s $animation-moving-flash-function infinite;
+    border: 2px solid white;
+    border-radius: 30px;
+    background: transparent;
+    font-size: 22px;
+    line-height: 1;
   }
 
   &_notouch {
@@ -142,7 +127,7 @@
   }
 
   &_hidden {
-    transition: opacity 500ms ease-in;
+    transition: animation-moving-flash(opacity, 500ms);
     opacity: 0;
   }
 }

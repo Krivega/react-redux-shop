@@ -1,0 +1,17 @@
+@import '@material/animation/functions';
+@import '@material/animation/variables';
+
+$animation-moving-function: cubic-bezier(0.825, 0, 0.5, 1);
+$animation-moving-flash-function: cubic-bezier(0.23, 1, 0.32, 1);
+
+@function animation-moving($name, $duration, $delay: 0ms) {
+  @return $name $duration $delay $animation-moving-function;
+}
+
+@function animation-moving-flash($name, $duration, $delay: 0ms) {
+  @return $name $duration $delay $animation-moving-flash-function;
+}
+
+@function transition($property) {
+  @return #{$property} 180ms $mdc-animation-standard-curve-timing-function;
+}

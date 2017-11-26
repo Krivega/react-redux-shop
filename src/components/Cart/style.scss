@@ -1,7 +1,6 @@
 @import 'sass/style';
 @import '@material/elevation/mixins';
 @import '@material/theme/mixins';
-@import '@material/animation/functions';
 
 .cart {
   position: absolute;
@@ -9,6 +8,7 @@
   right: 0;
   overflow: hidden;
   box-sizing: border-box;
+  width: 0;
   transform: translate3d($cart-size, 0, 0);
   opacity: 0;
   will-change: opacity, transform;
@@ -16,17 +16,13 @@
 
   @include mdc-theme-prop(background-color, background);
 
-  &:not(.cart_animating) {
-    width: 0;
-  }
-
   &_animating {
+    width: $cart-size;
     padding: 0 24px;
-    transition: mdc-animation-enter(opacity, 500ms), transform 500ms cubic-bezier(0.825, 0, 0.5, 1);
+    transition: mdc-animation-enter(opacity, 500ms), animation-moving(transform, 500ms);
 
     &.cart_open {
-      transition: mdc-animation-exit-permanent(opacity, 300ms),
-        transform 500ms cubic-bezier(0.825, 0, 0.5, 1);
+      transition: mdc-animation-exit-permanent(opacity, 300ms), animation-moving(transform, 500ms);
     }
   }
 

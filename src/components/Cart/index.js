@@ -61,9 +61,6 @@ export default class Cart extends React.Component {
   }
 
   handleTransitionEnd = event => {
-    const { open } = this.state;
-    console.log('event.propertyName', event.propertyName);
-
     if (event.propertyName === 'transform' && event.currentTarget === event.target) {
       this.setState({ animating: false });
     }
