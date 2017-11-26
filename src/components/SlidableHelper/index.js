@@ -43,9 +43,18 @@ export default class SlidableHelper extends React.PureComponent {
     };
   }
 
+  handleClick = () => {
+    this.setState({ hidden: true });
+  };
+
   render() {
+    const touch = features.isTouchDevice();
+
     return (
-      <div className={bem({ block, mods: this.getBemMods() })}>
+      <div
+        className={bem({ block, mods: this.getBemMods() })}
+        onClick={touch ? this.handleClick : null}
+      >
         <div className={bem({ block, elem: 'content', mods: { notouch: true } })}>
           Scroll or use arrow keys
         </div>
