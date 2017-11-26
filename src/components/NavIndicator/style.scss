@@ -8,7 +8,7 @@
   visibility: hidden;
   width: 100%;
   height: 2px;
-  transition: mdc-animation-enter(transform 240ms);
+  transition: mdc-animation-enter(transform, 240ms);
   transform-origin: left top;
   background-color: $primaryColor;
   background-color: rgba(white, 0.3);
