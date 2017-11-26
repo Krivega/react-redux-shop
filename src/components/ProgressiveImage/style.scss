@@ -1,10 +1,11 @@
 @import 'sass/style';
 
 .progressive-image {
-  transition: filter 300ms ease;
-  will-change: filter;
+  filter: blur(0);
 
   &_loading {
+    transition: filter 300ms ease;
+    will-change: filter;
     filter: blur(10px);
   }
 
