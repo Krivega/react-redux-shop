@@ -24,9 +24,9 @@
       &:hover,
       &:focus,
       &:active {
-        @include mdc-elevation(6);
-
         cursor: default;
+
+        @include mdc-elevation(6);
       }
     }
   }
@@ -39,6 +39,7 @@
     position: absolute;
     top: 0;
     right: 0;
+    z-index: 1;
     width: 20px;
     height: 20px;
   }

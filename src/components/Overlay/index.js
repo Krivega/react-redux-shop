@@ -76,7 +76,10 @@ export default class Overlay extends React.PureComponent {
   getBemMods() {
     let { open, animating } = this.state;
 
-    return { open: !!open, animating: !!animating };
+    return {
+      open: !!open,
+      animating: !!animating
+    };
   }
 
   renderHeader() {
