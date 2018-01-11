@@ -36,16 +36,28 @@ export function parseStoreWithProducts(store, productsStore) {
   return store.set('total', total).set('currency', currency);
 }
 
-export default createSelector(getStore, getStoreSellingProductsList, (store, productsStore) => {
-  store = parseStoreWithProducts(store, productsStore);
+export const getCart = createSelector(
+  getStore,
+  getStoreSellingProductsList,
+  (store, productsStore) => {
+    store = parseStoreWithProducts(store, productsStore);
 
+    return {
+      items: store
+        .get('items')
+        .toIndexedSeq()
+        .toArray(),
+      total: store.get('total'),
+      currency: store.get('currency')
+    };
+  }
+);
+
+export default createSelector(getStore, getCart, (store, cart) => {
   return {
-    items: store
-      .get('items')
-      .toIndexedSeq()
-      .toArray(),
-    total: store.get('total'),
-    currency: store.get('currency'),
+    items: cart.items,
+    total: cart.total,
+    currency: cart.currency,
     openCart: store.get('openCart')
   };
 });

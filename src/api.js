@@ -57,10 +57,10 @@ export function fetchListCities({ query }) {
   });
 }
 
-export function fetchSendOrder({ address }) {
+export function fetchSendOrder({ address, cart }) {
   const url = `${BASE_API_URL}/checkout/`;
 
   return post(url, {
-    data: address
+    data: { cart, address }
   });
 }
