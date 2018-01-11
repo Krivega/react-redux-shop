@@ -7,7 +7,7 @@ import './style.css';
 
 const block = 'cart';
 
-export default class Cart extends React.Component {
+export default class Cart extends React.PureComponent {
   static propTypes = {
     openCart: PropTypes.bool,
     onClickClose: PropTypes.func

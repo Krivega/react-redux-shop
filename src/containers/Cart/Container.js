@@ -7,7 +7,11 @@ import Carttotal from 'components/Carttotal';
 import Money from 'components/Money';
 import Box from 'components/Box';
 
-export default class ShopingCart extends React.PureComponent {
+export default class ShopingCart extends React.Component {
+  shouldComponentUpdate(nextProps, nextState) {
+    return this.props.items !== nextProps.items || this.props.openCart !== nextProps.openCart;
+  }
+
   handleClickBuy = id => {
     return this.props.onClickBuy(id);
   };

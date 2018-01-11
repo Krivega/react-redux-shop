@@ -10,6 +10,7 @@
   width: 100%;
   height: 2px;
   transition: transition(opacity);
+  will-change: opacity;
   opacity: 0;
   background-color: #e6e6e6;
 
@@ -52,6 +53,7 @@
     width: 100%;
     height: 100%;
     opacity: 0;
+    will-change: opacity;
 
     @include mdc-theme-prop(background-color, text-primary-on-dark);
 

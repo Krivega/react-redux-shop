@@ -2,10 +2,7 @@
   "name": "react-redux-shop",
   "description": "Implementation of an online store in the infrastructure of react-redux",
   "version": "0.1.0",
-  "keywords": [
-    "reactjs",
-    "redux"
-  ],
+  "keywords": ["reactjs", "redux"],
   "contributors": [
     {
       "name": "Krivega Dmitriy",
@@ -13,9 +10,7 @@
       "web": "http://krivega.com/"
     }
   ],
-  "demos": [
-    "http://midforest.krivega.com/"
-  ],
+  "demos": ["http://midforest.krivega.com/"],
   "repositories": [
     {
       "type": "git",
@@ -30,29 +25,29 @@
   },
   "dependencies": {
     "@material/animation": "^0.25.0",
-    "@material/button": "^0.25.0",
-    "@material/elevation": "^0.25.0",
-    "@material/fab": "^0.25.0",
+    "@material/button": "^0.28.0",
+    "@material/elevation": "^0.28.0",
+    "@material/fab": "^0.28.0",
     "@material/layout-grid": "^0.24.0",
-    "@material/list": "^0.25.0",
-    "@material/theme": "^0.25.0",
-    "@material/typography": "^0.3.0",
+    "@material/list": "^0.28.0",
+    "@material/theme": "^0.28.0",
+    "@material/typography": "^0.28.0",
     "cors": "^2.8.4",
-    "cross-env": "^5.1.1",
+    "cross-env": "^5.1.3",
     "express": "^4.16.2",
     "express-http-proxy": "^1.1.0",
     "history": "^4.7.2",
     "husky": "^0.14.3",
     "immutable": "^3.8.2",
-    "lint-staged": "^5.0.0",
+    "lint-staged": "^6.0.0",
     "lodash": "^4.17.4",
     "node-sass-chokidar": "0.0.3",
     "normalize.css": "^7.0.0",
     "npm-run-all": "^4.1.2",
-    "prettier": "^1.8.2",
+    "prettier": "^1.10.1",
     "prop-types": "^15.6.0",
-    "react": "^16.1.1",
-    "react-dom": "^16.1.1",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
     "react-redux": "^5.0.6",
     "react-router": "^4.2.0",
     "react-router-dom": "^4.2.2",
@@ -67,15 +62,13 @@
     "reselect": "^3.0.1"
   },
   "lint-staged": {
-    "src/**/*.{js,jsx,json,css}": [
-      "prettier --write",
-      "git add"
-    ]
+    "src/**/*.{js,jsx,json,scss}": ["prettier --write", "git add"]
   },
   "scripts": {
     "precommit": "lint-staged",
     "build-css": "node-sass-chokidar src/ -o src/ --include-path=src/ --include-path=node_modules/",
-    "watch-css": "npm run build-css && node-sass-chokidar src/ -o src/ --include-path=src/ --include-path=node_modules/ --watch --recursive",
+    "watch-css":
+      "npm run build-css && node-sass-chokidar src/ -o src/ --include-path=src/ --include-path=node_modules/ --watch --recursive",
     "start-js": "cross-env NODE_PATH=src react-scripts start",
     "start-server": "node ./bin/www",
     "start": "npm-run-all -p start-server watch-css start-js",

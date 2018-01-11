@@ -1,10 +1,8 @@
 import { fromJS } from 'immutable';
 import { storeName } from './selectors';
+import initialData from './data.json';
 
-const initialState = fromJS({
-  phoneNumber: '8 800 700 8000',
-  email: 'info@demo-midforest.com'
-});
+const initialState = fromJS(initialData);
 
 export default {
   [storeName]: function(state = initialState, action) {

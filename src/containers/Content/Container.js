@@ -9,7 +9,7 @@ import NotFoundInfo from 'containers/NotFoundInfo';
 
 export default function Routes({ location }) {
   return (
-    <FadeContainer keyCode={location.pathname.split('/')[1]}>
+    <FadeContainer keyCode={location.key}>
       <Switch location={location}>
         <Route exact path="/" component={SellingProductsList} />
         <Route path="/about" component={AboutInfo} />

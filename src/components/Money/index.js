@@ -14,6 +14,7 @@ export default class Money extends React.PureComponent {
 
   renderCurrency() {
     const { currency } = this.props;
+
     if (currency === undefined) {
       return null;
     }
