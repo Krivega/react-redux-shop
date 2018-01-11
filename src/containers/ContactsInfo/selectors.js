@@ -7,6 +7,7 @@ export function getStore(state) {
 }
 
 export default createSelector(getStore, store => ({
+  titleToken: store.get('titleToken'),
   phoneNumber: store.get('phoneNumber'),
   email: store.get('email')
 }));

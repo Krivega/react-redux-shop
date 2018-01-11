@@ -17,16 +17,16 @@ export default class Address extends React.PureComponent {
     return (
       <div>
         <Field
-          label="Address"
+          labelToken="address"
           id="address"
           type="text"
           onChange={onChangeStreet}
           value={street}
           required
         />
-        <Field label="Name" id="name" type="text" value={name} onChange={onChangeName} />
+        <Field labelToken="name" id="name" type="text" value={name} onChange={onChangeName} />
         <Field
-          label="Phone"
+          labelToken="phone"
           id="phone"
           type="tel"
           value={phone}
@@ -34,7 +34,7 @@ export default class Address extends React.PureComponent {
           required
         />
         <Field
-          label="Email"
+          labelToken="email"
           id="email"
           type="email"
           value={email}

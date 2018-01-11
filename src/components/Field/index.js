@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { stringify as bem } from 'rebem-classname';
+import { FormattedMessage } from 'react-intl';
 
 import './style.css';
 
@@ -10,8 +11,10 @@ export default class Field extends React.PureComponent {
   static propTypes = {
     id: PropTypes.string,
     type: PropTypes.string,
-    label: PropTypes.string,
+    labelToken: PropTypes.string,
     helpText: PropTypes.string,
+    label: PropTypes.string,
+    helpTextToken: PropTypes.string,
     value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     readOnly: PropTypes.bool,
     disabled: PropTypes.bool,
@@ -104,13 +107,16 @@ export default class Field extends React.PureComponent {
   };
 
   renderLabel() {
-    const { id, label } = this.props;
+    let { id, label, labelToken } = this.props;
     const { focused, value } = this.state;
     const mods = {
       float: !!(focused || value)
     };
 
-    if (label !== undefined) {
+    if (label !== undefined || labelToken !== undefined) {
+      if (labelToken !== undefined) {
+        label = <FormattedMessage id={labelToken} />;
+      }
       return (
         <label className={bem({ block, elem: 'label', mods })} htmlFor={id}>
           {label}
@@ -120,9 +126,13 @@ export default class Field extends React.PureComponent {
   }
 
   renderHelptext() {
-    const { helpText } = this.props;
+    let { helpText, helpTextToken } = this.props;
 
-    if (helpText !== undefined) {
+    if (helpText !== undefined || helpTextToken !== undefined) {
+      if (helpTextToken !== undefined) {
+        helpText = <FormattedMessage id={helpTextToken} />;
+      }
+
       return <div className={bem({ block, elem: 'helptext' })}>{helpText}</div>;
     }
   }

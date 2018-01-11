@@ -4,10 +4,10 @@ import { storeName } from './selectors';
 
 const initialState = fromJS({
   items: [
-    { id: 'products', link: '/', text: 'Products', icon: 'view_day' },
-    { id: 'aboutUs', link: '/about', text: 'About us', icon: 'info' },
-    { id: 'delivery', link: '/delivery', text: 'Delivery', icon: 'local_shipping' },
-    { id: 'contacts', link: '/contacts', text: 'Contacts', icon: 'place' }
+    { id: 'products', link: '/', token: 'products', icon: 'view_day' },
+    { id: 'aboutUs', link: '/about', token: 'aboutUs', icon: 'info' },
+    { id: 'delivery', link: '/delivery', token: 'delivery', icon: 'local_shipping' },
+    { id: 'contacts', link: '/contacts', token: 'contacts', icon: 'place' }
   ]
 });
 

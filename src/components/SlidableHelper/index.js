@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import features from 'features';
 import { stringify as bem } from 'rebem-classname';
+import { FormattedMessage } from 'react-intl';
 
 import './style.css';
 
@@ -56,9 +57,11 @@ export default class SlidableHelper extends React.PureComponent {
         onClick={touch ? this.handleClick : null}
       >
         <div className={bem({ block, elem: 'content', mods: { notouch: true } })}>
-          Scroll or use arrow keys
+          <FormattedMessage id="scrollHelperText" />
         </div>
-        <div className={bem({ block, elem: 'content', mods: { touch: true } })}>Swipe up</div>
+        <div className={bem({ block, elem: 'content', mods: { touch: true } })}>
+          <FormattedMessage id="swipeHelperText" />
+        </div>
       </div>
     );
   }

@@ -2,6 +2,7 @@ import React from 'react';
 import SlidableList from 'components/SlidableList';
 import Product from 'components/Product';
 import Button from 'components/Button';
+import { FormattedMessage } from 'react-intl';
 
 export default class SellingProductsList extends React.PureComponent {
   handleClickBuy = id => {
@@ -25,7 +26,7 @@ export default class SellingProductsList extends React.PureComponent {
         description={item.get('description')}
       >
         <Button raised onClick={this.handleClickBuy.bind(this, id)}>
-          ADD TO CART
+          <FormattedMessage id="addToCart" />
         </Button>
       </Product>
     );

@@ -8,6 +8,7 @@ import Delivery from 'containers/Delivery';
 import Heading from 'components/Heading';
 import Money from 'components/Money';
 import Loader from 'components/Loader';
+import { FormattedMessage } from 'react-intl';
 
 export default class OrderInfo extends React.Component {
   shouldComponentUpdate(nextProps) {
@@ -48,9 +49,9 @@ export default class OrderInfo extends React.Component {
       return (
         <div>
           <Heading title indented>
-            Success!
+            <FormattedMessage id="success.title" />
           </Heading>
-          Your order was successfully sent.
+          <FormattedMessage id="success.description" />
           <Heading sub2 red>
             This demo content is created to demonstrate the skills of development
           </Heading>
@@ -65,7 +66,7 @@ export default class OrderInfo extends React.Component {
           <Money value={cartTotal} currency={currency} />
         </Carttotal>
         <Heading title indented>
-          Delivery info
+          <FormattedMessage id="deliveryInfo" />
         </Heading>
         <Delivery />
         <Address />

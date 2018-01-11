@@ -6,6 +6,7 @@ import CartItem from 'components/CartItem';
 import Carttotal from 'components/Carttotal';
 import Money from 'components/Money';
 import Box from 'components/Box';
+import { FormattedMessage } from 'react-intl';
 
 export default class ShopingCart extends React.Component {
   shouldComponentUpdate(nextProps, nextState) {
@@ -51,7 +52,7 @@ export default class ShopingCart extends React.Component {
         </Carttotal>
         <Box top1>
           <Button raised stretch onClick={this.props.onClickOrder}>
-            CHECKOUT
+            <FormattedMessage id="checkoutCart" />
           </Button>
         </Box>
       </Cart>

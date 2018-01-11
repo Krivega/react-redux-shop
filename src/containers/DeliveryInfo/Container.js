@@ -1,17 +1,18 @@
 import React from 'react';
 import Content from 'components/Content';
 import Heading from 'components/Heading';
+import { FormattedMessage } from 'react-intl';
 
 export default class DeliveryInfo extends React.PureComponent {
   render() {
-    let { info } = this.props;
+    const { titleToken, descriptionToken } = this.props;
 
     return (
       <Content>
         <Heading title indented>
-          This demo content is created to demonstrate the skills of development
+          <FormattedMessage id={titleToken} />
         </Heading>
-        {info}
+        <FormattedMessage id={descriptionToken} />
       </Content>
     );
   }

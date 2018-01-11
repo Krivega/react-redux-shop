@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { stringify as bem } from 'rebem-classname';
+import { FormattedMessage } from 'react-intl';
 
 import './style.css';
 
@@ -9,6 +10,7 @@ const block = 'overlay';
 export default class Overlay extends React.PureComponent {
   static propTypes = {
     title: PropTypes.string,
+    titleToken: PropTypes.string,
     open: PropTypes.bool,
     onClose: PropTypes.func
   };
@@ -83,9 +85,13 @@ export default class Overlay extends React.PureComponent {
   }
 
   renderHeader() {
-    const { title } = this.props;
+    let { title, titleToken } = this.props;
 
-    if (title) {
+    if (title || titleToken) {
+      if (titleToken) {
+        title = <FormattedMessage id={titleToken} />;
+      }
+
       return (
         <header className={bem({ block, elem: 'header' })}>
           <h2 className={bem({ block, elem: 'header__title' })}>{title}</h2>

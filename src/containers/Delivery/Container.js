@@ -8,8 +8,8 @@ export default class Delivery extends React.PureComponent {
     return (
       <Autocomplete
         id="deliveryCity"
-        label="City"
-        helpText="start typing for search ..."
+        labelToken="city"
+        helpTextToken="autocompleteCity.helpText"
         list={listCities.toJS()}
         value={selectedCityName}
         loading={requestedListCities}

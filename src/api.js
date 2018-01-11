@@ -2,7 +2,6 @@ const BASE_API_URL = '/api';
 
 function fetch2(url, options) {
   options = {
-    // your default options
     credentials: 'same-origin',
     redirect: 'error',
     ...options

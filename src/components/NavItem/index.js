@@ -10,7 +10,6 @@ const block = 'nav-item';
 
 export default class NavItem extends React.PureComponent {
   static propTypes = {
-    text: PropTypes.string.isRequired,
     icon: PropTypes.string.isRequired,
     link: PropTypes.string.isRequired,
     active: PropTypes.bool
@@ -23,7 +22,7 @@ export default class NavItem extends React.PureComponent {
   }
 
   render() {
-    const { text, link, icon } = this.props;
+    const { link, icon, children } = this.props;
 
     return (
       <div className={bem({ block, mods: this.getBemMods() })}>
@@ -32,7 +31,7 @@ export default class NavItem extends React.PureComponent {
             <div className={bem({ block, elem: 'icon' })}>
               <Icon name={icon} />
             </div>
-            <div className={bem({ block, elem: 'text' })}>{text}</div>
+            <div className={bem({ block, elem: 'text' })}>{children}</div>
           </div>
         </Link>
       </div>

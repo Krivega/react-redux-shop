@@ -5,6 +5,7 @@ import OrderInfo from 'containers/OrderInfo';
 import ScrollableContent from 'components/ScrollableContent';
 import Actions from 'components/Actions';
 import Button from 'components/Button';
+import { FormattedMessage } from 'react-intl';
 
 export default class Order extends React.Component {
   static defaultProps = {
@@ -29,10 +30,10 @@ export default class Order extends React.Component {
     return (
       <Actions>
         <Button key="cancel" onClick={this.props.onClose}>
-          Cancel
+          <FormattedMessage id="cancel" />
         </Button>
         <Button key="checkout" onClick={this.props.onCheckout} raised>
-          Checkout
+          <FormattedMessage id="checkout" />
         </Button>
       </Actions>
     );
@@ -54,14 +55,14 @@ export default class Order extends React.Component {
 
   render() {
     const { openOrder, cartSize, sended } = this.props;
-    const title = sended ? null : 'Order';
+    const titleToken = sended ? null : 'order';
 
     if (cartSize === 0) {
       return null;
     }
 
     return (
-      <Overlay open={openOrder} title={title} onClose={this.props.onClose}>
+      <Overlay open={openOrder} titleToken={titleToken} onClose={this.props.onClose}>
         {this.renderContent()}
         {this.renderActions()}
       </Overlay>

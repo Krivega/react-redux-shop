@@ -1,5 +1,6 @@
 import { combineReducers } from 'redux-immutable';
 import rootReducer from 'containers/Root/reducer';
+import intlReducer from 'containers/Intl/reducer';
 import routerReducer from 'containers/Router/reducer';
 import generalMenuReducer from 'containers/GeneralMenu/reducer';
 import aboutInfoReducer from 'containers/AboutInfo/reducer';
@@ -12,6 +13,7 @@ import deliveryReducer from 'containers/Delivery/reducer';
 
 const appReducer = combineReducers({
   ...routerReducer,
+  ...intlReducer,
   ...generalMenuReducer,
   ...sellingProductsListReducer,
   ...aboutInfoReducer,

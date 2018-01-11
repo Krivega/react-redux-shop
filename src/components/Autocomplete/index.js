@@ -11,8 +11,8 @@ export default class Autocomplete extends React.PureComponent {
 
   static propTypes = {
     id: PropTypes.string.isRequired,
-    label: PropTypes.string,
-    helpText: PropTypes.string,
+    labelToken: PropTypes.string,
+    helpTextToken: PropTypes.string,
     list: PropTypes.arrayOf(PropTypes.object),
     value: PropTypes.string,
     onChange: PropTypes.func.isRequired,
@@ -36,15 +36,15 @@ export default class Autocomplete extends React.PureComponent {
   }
 
   render() {
-    const { value, loading, helpText, id, label } = this.props;
+    const { value, loading, helpTextToken, id, labelToken } = this.props;
 
     return (
       <div>
         <Field
-          label={label}
+          labelToken={labelToken}
           id={id}
           type="text"
-          helpText={helpText}
+          helpTextToken={helpTextToken}
           required
           value={value}
           onChange={this.handleChangeCity}

@@ -7,5 +7,6 @@ export function getStore(state) {
 }
 
 export default createSelector(getStore, store => ({
-  info: store.get('info')
+  titleToken: store.get('titleToken'),
+  descriptionToken: store.get('descriptionToken')
 }));
