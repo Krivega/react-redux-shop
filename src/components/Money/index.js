@@ -12,16 +12,6 @@ export default class Money extends React.PureComponent {
     currency: PropTypes.string
   };
 
-  renderCurrency() {
-    const { currency } = this.props;
-
-    if (currency === undefined) {
-      return null;
-    }
-
-    return <div className={bem({ block, elem: 'currency' })}>{currency}</div>;
-  }
-
   /**
    * Format any number
    * @param number - Number
@@ -31,7 +21,7 @@ export default class Money extends React.PureComponent {
    * @returns {string}
    */
   formatNumber(number, fractionalDigits, decimalMark, thousandsSeparator) {
-    let sign;
+    let sign = number < 0 ? '-' : '';
     let numberString;
     let thousandsPrefix;
 
@@ -41,7 +31,6 @@ export default class Money extends React.PureComponent {
 
     decimalMark = decimalMark === undefined ? '.' : decimalMark;
     thousandsSeparator = thousandsSeparator === undefined ? ' ' : thousandsSeparator;
-    sign = number < 0 ? '-' : '';
     number = Math.abs(+number || 0);
     numberString = parseInt(number.toFixed(fractionalDigits), 10) + '';
     thousandsPrefix = numberString.length > 3 ? numberString.length % 3 : 0;
@@ -59,17 +48,42 @@ export default class Money extends React.PureComponent {
     );
   }
 
-  formatDollars(value) {
+  formatMoney(value) {
     return this.formatNumber(value, 0, '.', ',');
+  }
+
+  isLeftSide() {
+    const { currency } = this.props;
+
+    return currency === '$';
+  }
+
+  getBemMods() {
+    return {
+      lefted: this.isLeftSide(),
+      righted: !this.isLeftSide()
+    };
+  }
+
+  renderCurrency() {
+    let { currency } = this.props;
+
+    if (currency === undefined) {
+      return null;
+    } else if (currency === 'р' || currency === 'руб') {
+      currency = <span>&#8381;</span>;
+    }
+
+    return <div className={bem({ block, elem: 'currency' })}>{currency}</div>;
   }
 
   render() {
     const { value } = this.props;
 
     return (
-      <div className={bem({ block })}>
+      <div className={bem({ block, mods: this.getBemMods() })}>
         {this.renderCurrency()}
-        {this.formatDollars(value)}
+        {this.formatMoney(value)}
       </div>
     );
   }

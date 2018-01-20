@@ -120,13 +120,17 @@ export default class CartItem extends React.PureComponent {
     }
 
     if (!readonly) {
-      summ = <Money value={orderedQuantity} currency={currency} />;
+      summ = [
+        <span key="1">&nbsp;</span>,
+        '=',
+        <span key="2">&nbsp;</span>,
+        <Money key="3" value={orderedQuantity} currency={currency} />
+      ];
     }
 
     return (
       <div className={bem({ block, elem: 'text__secondary' })}>
-        {count} x <Money value={productPrice} currency={currency} />
-        {summ ? '= ' : ''}
+        {count}&nbsp;x&nbsp;<Money value={productPrice} currency={currency} />
         {summ}
       </div>
     );
