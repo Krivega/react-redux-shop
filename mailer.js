@@ -10,7 +10,15 @@ function parseTemplateData(data) {
 function createEmailTemplate(data = []) {
   const templateData = parseTemplateData(data);
 
-  return data.map(([title, value]) => `${title.toUpperCase()}:\n${value}\n\n`);
+  return templateData
+    .map(
+      ([title, value]) => `
+      <b>${title.toUpperCase()}:</b>
+      <br/>
+      ${value}<br/>
+    `
+    )
+    .join('<br/>');
 }
 
 module.exports = ({ title, emailData }) => {
