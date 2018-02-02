@@ -84,6 +84,7 @@
     "build-js": "react-scripts build",
     "build": "npm-run-all build-css build-js",
     "arch-build" : "tar -zcvf build.tar.gz build",
+    "extract-build": "tar -zxvf build.tar.gz build",
     "build-and-arch" : "npm-run-all build arch-build",
     "images": "gulp images",
     "test": "react-scripts test --env=jsdom",
