@@ -44,7 +44,7 @@ gulp.task('images-optimize', () => {
         zopflipng: true,
         jpegRecompress: true,
         jpegoptim: true,
-        mozjpeg: false,
+        mozjpeg: true,
         gifsicle: true,
         guetzli: true,
         svgo: true,

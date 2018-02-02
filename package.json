@@ -2,7 +2,10 @@
   "name": "react-redux-shop",
   "description": "Implementation of an online store in the infrastructure of react-redux",
   "version": "0.1.0",
-  "keywords": ["reactjs", "redux"],
+  "keywords": [
+    "reactjs",
+    "redux"
+  ],
   "contributors": [
     {
       "name": "Krivega Dmitriy",
@@ -10,7 +13,9 @@
       "web": "http://krivega.com/"
     }
   ],
-  "demos": ["http://midforest.krivega.com/"],
+  "demos": [
+    "http://midforest.krivega.com/"
+  ],
   "repositories": [
     {
       "type": "git",
@@ -64,13 +69,15 @@
     "reselect": "^3.0.1"
   },
   "lint-staged": {
-    "src/**/*.{js,jsx,json,scss}": ["prettier --write", "git add"]
+    "src/**/*.{js,jsx,json,scss}": [
+      "prettier --write",
+      "git add"
+    ]
   },
   "scripts": {
     "precommit": "lint-staged",
     "build-css": "node-sass-chokidar src/ -o src/ --include-path=src/ --include-path=node_modules/",
-    "watch-css":
-      "npm run build-css && node-sass-chokidar src/ -o src/ --include-path=src/ --include-path=node_modules/ --watch --recursive",
+    "watch-css": "npm run build-css && node-sass-chokidar src/ -o src/ --include-path=src/ --include-path=node_modules/ --watch --recursive",
     "start-js": "react-scripts start",
     "start-server": "node ./bin/www",
     "start": "npm-run-all -p start-server watch-css start-js",
