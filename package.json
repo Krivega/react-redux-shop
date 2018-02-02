@@ -2,10 +2,7 @@
   "name": "react-redux-shop",
   "description": "Implementation of an online store in the infrastructure of react-redux",
   "version": "0.1.0",
-  "keywords": [
-    "reactjs",
-    "redux"
-  ],
+  "keywords": ["reactjs", "redux"],
   "contributors": [
     {
       "name": "Krivega Dmitriy",
@@ -13,9 +10,7 @@
       "web": "http://krivega.com/"
     }
   ],
-  "demos": [
-    "http://midforest.krivega.com/"
-  ],
+  "demos": ["http://midforest.krivega.com/"],
   "repositories": [
     {
       "type": "git",
@@ -69,24 +64,30 @@
     "reselect": "^3.0.1"
   },
   "lint-staged": {
-    "src/**/*.{js,jsx,json,scss}": [
-      "prettier --write",
-      "git add"
-    ]
+    "src/**/*.{js,jsx,json,scss}": ["prettier --write", "git add"]
   },
   "scripts": {
     "precommit": "lint-staged",
     "build-css": "node-sass-chokidar src/ -o src/ --include-path=src/ --include-path=node_modules/",
-    "watch-css": "npm run build-css && node-sass-chokidar src/ -o src/ --include-path=src/ --include-path=node_modules/ --watch --recursive",
+    "watch-css":
+      "npm run build-css && node-sass-chokidar src/ -o src/ --include-path=src/ --include-path=node_modules/ --watch --recursive",
     "start-js": "react-scripts start",
     "start-server": "node ./bin/www",
     "start": "npm-run-all -p start-server watch-css start-js",
     "build-js": "react-scripts build",
     "build": "npm-run-all build-css build-js",
+    "images": "gulp images",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
   "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-filter": "^5.1.0",
+    "gulp-image": "^4.2.0",
+    "gulp-image-resize": "^0.13.0",
+    "gulp-rename": "^1.2.2",
+    "require-dir": "^0.3.2",
+    "run-sequence": "^2.2.1",
     "why-did-you-update": "^0.1.0"
   }
 }
